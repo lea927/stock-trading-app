@@ -18,6 +18,7 @@ gem 'rexml', '>= 3.2.5'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'factory_bot'
 end
 
 group :development do

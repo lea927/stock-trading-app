@@ -17,6 +17,11 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 
+RSpec.configure do |config|
+  config.include Warden::Test::Helpers
+  Warden.test_reset!
+end
+
 Capybara.register_driver :selenium_chrome do |app|
   Capybara::Selenium::Driver.new(app, browser: :chrome)
 end
