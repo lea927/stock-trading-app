@@ -19,7 +19,9 @@ end
 
 RSpec.configure do |config|
   config.include Warden::Test::Helpers
-  Warden.test_reset!
+  config.after :each do
+    Warden.test_reset!
+  end
 end
 
 Capybara.register_driver :selenium_chrome do |app|
