@@ -8,7 +8,6 @@ RSpec.describe 'logging in users', type: :system do
     @user = FactoryBot.create(:user)
   end
 
-  
   before do
     driven_by(:rack_test)
     role

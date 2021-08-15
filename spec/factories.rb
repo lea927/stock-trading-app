@@ -9,7 +9,7 @@ FactoryBot.define do
     # if needed
     # is_active true
   end
-  factory :role do 
+  factory :role do
     name { 'Admin' }
   end
 end
