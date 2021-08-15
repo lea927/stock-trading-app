@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "logging in users", type: :system do
+RSpec.describe 'logging in users', type: :system do
   let(:user) do
     @user = FactoryBot.create(:user)
   end
