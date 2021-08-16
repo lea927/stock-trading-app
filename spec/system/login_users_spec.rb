@@ -1,21 +1,22 @@
 require 'rails_helper'
 
 RSpec.describe 'logging in users', type: :system do
-  let(:role) do
-    @role = FactoryBot.create(:role)
+  let(:admin_role) do 
+      Role.find_or_create_by({name: 'Admin'})
   end
-  let(:user) do
-    @user = FactoryBot.create(:user)
+  let(:admin_user) do 
+    User.create!(
+      first_name: 'Bob', last_name: 'Marley', email: 'test@example.com', password: 'test123', role: 1
+    )
   end
 
-  before do
-    driven_by(:rack_test)
-    role
-    user
+  it 'successfully signs in' do
     visit new_user_session_path
+    login_as(admin_user)
+    expect(page).to have_content("Signed in successfully.")
   end
-
-  it 'validates visited path' do
-    expect(page).to have_current_path new_user_session_path
+  it 'should check if user is signed up with proper role' do
+    expect(admin_user.role.name).to eq('Admin')
+    expect(User.find(admin_user.id).role.name).to eq('Admin')
   end
 end
