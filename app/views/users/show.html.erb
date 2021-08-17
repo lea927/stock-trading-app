@@ -1,0 +1,6 @@
+<div>
+  <p><strong>Email: </strong><%= @user.email %></p>
+  <p> <strong>Full Name: </strong><%= @user.full_name %></p>
+  <p> <strong>Account: </strong> <%= @user.role.name %></p>
+</div>
+<%= link_to 'Back', '/admin/users' %>
