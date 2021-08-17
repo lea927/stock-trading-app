@@ -12,14 +12,14 @@ class User < ApplicationRecord
   end
 
   def admin?
-    role.name == 'Admin'
+    self.role.name == 'Admin'
   end
 
   def broker?
-    role.name == 'Broker'
+    self.role.name == 'Broker'
   end
 
   def buyer?
-    role.name == 'Buyer'
+    self.role.name == 'Buyer'
   end
 end
