@@ -10,4 +10,14 @@ class User < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def admin?
+    self.role.name == 'Admin'
+  end
+  def broker?
+    self.role.name == 'Broker'
+  end
+  def buyer?
+    self.role.name == 'Buyer'
+  end
 end
