@@ -3,10 +3,10 @@
   <%= render "devise/shared/error_messages", resource: resource %>
   <div class="field">
     <p>Type of Account: </p>
-    <%= f.radio_button(:role, 2) %>
-    <%= f.label :role, 'Broker', :value => 2 %>
-    <%= f.radio_button(:role, 3) %>
-    <%= f.label :role, 'Buyer', :value => 3 %>
+    <%= f.radio_button(:role_id, 2) %>
+    <%= f.label :role_id, 'Broker', :value => 2 %>
+    <%= f.radio_button(:role_id, 3) %>
+    <%= f.label :role_id, 'Buyer', :value => 3 %>
   </div>
   <div class="field">
     <%= f.label :first_name, 'First Name' %><br />
