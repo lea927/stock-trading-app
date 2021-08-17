@@ -1,12 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe 'logging in users', type: :system, driver: :selenium_chrome, js: true do
+  let(:reset_id) do
+    Role.connection.execute('ALTER SEQUENCE roles_id_seq RESTART')
+  end
   let(:role) do
     @role = FactoryBot.create(:role)
   end
 
   let(:user) do
     @user = FactoryBot.create(:user)
+  end
+
+  before do
+    reset_id
   end
 
   it 'validates sign in path' do
