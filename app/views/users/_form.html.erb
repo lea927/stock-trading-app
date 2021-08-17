@@ -1,0 +1,16 @@
+<%= form_with(model: user) do |form| %>
+  <% if user.errors.any? %>
+    <div id="error_explanation">
+      <% user.errors.each do |error| %>
+        <p><%= error.full_message %></p>
+      <% end %>
+    </div>
+  <% end %>
+  <%= collection_select(
+  :user, :role_id, Role.all, :id, :name, { prompt: true } 
+) %>
+  <%# add params for creating new user %>
+  <div>
+    <%= form.submit%>
+  </div>
+<% end %>
