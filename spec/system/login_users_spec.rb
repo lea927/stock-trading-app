@@ -18,11 +18,8 @@ RSpec.describe 'logging in users', type: :system, driver: :selenium_chrome, js: 
   it 'successfully signs in' do
     role && user
     visit new_user_session_path
-    within 'form' do
-      fill_in 'user_email', with: @user.email
-      fill_in 'user_password', with: @user.password
-      click_on 'Log in'
-    end
-    sleep(2)
+    fill_in 'user_email', with: @user.email
+    fill_in 'user_password', with: @user.password
+    click_on 'Log in'
   end
 end
