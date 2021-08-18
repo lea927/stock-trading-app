@@ -17,15 +17,6 @@ RSpec.describe 'creating users', type: :system, driver: :selenium_chrome, js: tr
       password: 'tom_admin123',
       role_id: 1 )
   end
-  let(:create_broker) do
-    @broker = User.create!(
-      first_name: 'Jane',
-      last_name: 'Doe',
-      email: 'janedoe_broker@email.com',
-      password: 'janedoe123',
-      password_confirmation: 'janedoe123',
-      role_id: 2 )
-  end
   let(:fillout_broker) do
     page.select 'Broker', :from => 'user[role_id]'
     fill_in 'user_first_name', with: 'Jane'
@@ -33,6 +24,14 @@ RSpec.describe 'creating users', type: :system, driver: :selenium_chrome, js: tr
     fill_in 'user_email', with: 'janedoe_broker@email.com'
     fill_in 'user_password', with: 'janedoe123'
     fill_in 'user_password_confirmation', with: 'janedoe123'
+  end
+  let(:fillout_buyer) do
+    page.select 'Buyer', :from => 'user[role_id]'
+    fill_in 'user_first_name', with: 'John'
+    fill_in 'user_last_name', with: 'Doe'
+    fill_in 'user_email', with: 'johndoe_buyer@email.com'
+    fill_in 'user_password', with: 'johndoe123'
+    fill_in 'user_password_confirmation', with: 'johndoe123'
   end
   before do
     reset_id
@@ -51,7 +50,12 @@ RSpec.describe 'creating users', type: :system, driver: :selenium_chrome, js: tr
     visit '/admin/users_admin/new'
     fillout_broker
     click_on 'Create User'
-    byebug
+    sleep(2)
+  end
+  it 'creates a buyer user' do
+    visit '/admin/users_admin/new'
+    fillout_buyer
+    click_on 'Create User'
     sleep(2)
   end
 end
