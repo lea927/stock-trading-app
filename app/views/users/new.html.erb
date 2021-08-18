@@ -7,7 +7,7 @@
       <% end %>
     </div>
   <% end %>
-  <%= collection_select(:@user, :role_id, Role.all, :id, :name, { prompt: true } ) %>
+  <%= collection_select(:user, :role_id, Role.all, :id, :name, { prompt: true } ) %>
   <div class="field">
     <%= form.label :first_name %>
     <%= form.text_field :first_name %>
@@ -32,6 +32,7 @@
     <%= form.password_field :password_confirmation %>
   </div>
   <div>
+    byebug
     <%= form.submit %>
   </div>
 <% end %>
