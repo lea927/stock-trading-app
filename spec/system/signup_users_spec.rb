@@ -1,30 +1,41 @@
-# require 'rails_helper'
+require 'rails_helper'
 
-# RSpec.describe 'User signing up', type: :system, driver: :selenium_chrome, js: true do
-#   let(:user) do
-#     fill_in 'First Name', with: 'Bob'
-#     fill_in 'Last Name', with: 'Smith'
-#     fill_in 'Email', with: 'bobsmith@email.com'
-#     fill_in 'Password', with: 'bob1295'
-#     fill_in 'Password confirmation', with: 'bob1295'
-#     click_on 'Sign up'
-#   end
+RSpec.describe 'User signing up', type: :system, driver: :selenium_chrome, js: true do
+  let(:reset_id) do
+    Role.connection.execute('ALTER SEQUENCE roles_id_seq RESTART')
+  end
+  let(:user) do
+    @user = FactoryBot.create(:user)
+  end
+  let(:populate_form) do
+    fill_in 'user_first_name', with: user.first_name
+    fill_in 'user_last_name', with: user.last_name
+    fill_in 'user_email', with: user.email
+    fill_in 'user_password', with: user.password
+    fill_in 'user_password_confirmation', with: user.password_confirmation
+    User.destroy_all
+  end
 
-#   describe 'Succesful sign up as a broker' do
-#     it 'successfully signs up a user as a broker' do
-#       visit new_user_registration_path
-#       choose(option: 2)
-#       user
-#       expect(page).to have_content('Welcome! You have signed up successfully.')
-#     end
-#   end
+  before do
+    reset_id
+    user
+  end
 
-#   describe 'Succesful sign up as a buyer' do
-#     it 'successfully signs up a user as a buyer' do
-#       visit new_user_registration_path
-#       choose(option: 3)
-#       user
-#       expect(page).to have_content('Welcome! You have signed up successfully.')
-#     end
-#   end
-# end
+  describe 'Successful sign up' do
+    it 'signs up as a broker' do
+      visit new_user_registration_path
+      choose(option: 2)
+      populate_form
+      click_on 'Sign up'
+      expect(page).to have_content('Welcome! You have signed up successfully.')
+    end
+
+    it 'signs up as a buyer' do
+      visit new_user_registration_path
+      choose(option: 3)
+      populate_form
+      click_on 'Sign up'
+      expect(page).to have_content('Welcome! You have signed up successfully.')
+    end
+  end
+end
