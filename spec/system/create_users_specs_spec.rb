@@ -59,10 +59,17 @@ RSpec.describe 'creating users', type: :system, driver: :selenium_chrome, js: tr
       expect(user).to_not eq nil
     end
   end
-  it 'creates a buyer user' do
-    visit '/admin/users_admin/new'
-    fillout_buyer
-    click_on 'Create User'
-    sleep(2)
+  describe 'creates a buyer user' do
+    it 'fills out create form' do
+      visit '/admin/users_admin/new'
+      fillout_buyer
+      click_on 'Create User'
+      sleep(2)
+    end
+    it 'validates if saved in database' do
+      User.create!(email:'johndoe_buyer@email.com',password:'johndoe123',role_id: 2, first_name:'John',last_name:'Doe')
+      user = User.find_by(email:'johndoe_buyer@email.com')
+      expect(user).to_not eq nil
+    end
   end
 end
