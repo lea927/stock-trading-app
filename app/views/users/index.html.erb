@@ -1,18 +1,23 @@
 <p>You are logged in as: <%= current_user.email %></p>
 <p> <strong>Role: </strong><%= current_user.role.name %></p>
-<%= link_to "New User", new_user_path %>
+<%= link_to "New User", new_users_admin_path %>
 <table>
   <thead>
     <th></th>
     <th>Email</th>
     <th>Account</th>
+    <th>Actions</th>
   </thead>
   <% @users.each do |user| %>
     <tbody>
       <td><%= @users.find_index(user)+1 %></td>
       <td><%= user.email %></td>
       <td><%= user.role.name %></td>
-      <td><%= link_to 'Show', user %></td>
+      byebug
+      <td>
+        <%= link_to 'Show', users_admin_path(user) %>
+        <%= link_to 'Edit', edit_users_admin_path(user) %>
+      </td>
     </tbody>
   <% end %>
 </table>
