@@ -43,7 +43,7 @@ class UsersController < ApplicationController
                            end
   
     if successfully_updated
-      redirect_to @user, notice: 'User was successfully updated.'
+      redirect_to users_admin_path(@user), notice: 'User was successfully updated.'
     else
       render :edit
     end
