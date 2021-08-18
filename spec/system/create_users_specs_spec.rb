@@ -9,7 +9,7 @@ RSpec.describe 'creating users', type: :system, driver: :selenium_chrome, js: tr
         Role.find_or_create_by({name: role})
     end
   end
-  let(:user) do
+  let(:admin) do
     @user = User.create!(
       first_name: 'Tom',
       last_name: 'Reid',
@@ -17,10 +17,27 @@ RSpec.describe 'creating users', type: :system, driver: :selenium_chrome, js: tr
       password: 'tom_admin123',
       role_id: 1 )
   end
+  let(:create_broker) do
+    @broker = User.create!(
+      first_name: 'Jane',
+      last_name: 'Doe',
+      email: 'janedoe_broker@email.com',
+      password: 'janedoe123',
+      password_confirmation: 'janedoe123',
+      role_id: 2 )
+  end
+  let(:fillout_broker) do
+    page.select 'Broker', :from => 'user[role_id]'
+    fill_in 'user_first_name', with: 'Jane'
+    fill_in 'user_last_name', with: 'Doe'
+    fill_in 'user_email', with: 'janedoe_broker@email.com'
+    fill_in 'user_password', with: 'janedoe123'
+    fill_in 'user_password_confirmation', with: 'janedoe123'
+  end
   before do
     reset_id
     role
-    user
+    admin
   end
   before :each do
     login_as(@user, :scope => :user)
@@ -28,6 +45,13 @@ RSpec.describe 'creating users', type: :system, driver: :selenium_chrome, js: tr
   it 'validates path if correct' do
     visit '/admin/users_admin/new'
     expect(page).to have_current_path new_users_admin_path
+    sleep(2)
+  end
+  it 'creates a broker user' do
+    visit '/admin/users_admin/new'
+    fillout_broker
+    click_on 'Create User'
+    byebug
     sleep(2)
   end
 end
