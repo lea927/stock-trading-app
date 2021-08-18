@@ -46,11 +46,18 @@ RSpec.describe 'creating users', type: :system, driver: :selenium_chrome, js: tr
     expect(page).to have_current_path new_users_admin_path
     sleep(2)
   end
-  it 'creates a broker user' do
-    visit '/admin/users_admin/new'
-    fillout_broker
-    click_on 'Create User'
-    sleep(2)
+  describe 'creates a broker user' do
+    it 'fills out create form' do
+      visit '/admin/users_admin/new'
+      fillout_broker
+      click_on 'Create User'
+      sleep(2)
+    end
+    it 'validates if saved in database' do
+      User.create!(email:'janedoe_broker@email.com',password:'janedoe123',role_id: 2, first_name:'Jane',last_name:'Doe')
+      user = User.find_by(email:'janedoe_broker@email.com')
+      expect(user).to_not eq nil
+    end
   end
   it 'creates a buyer user' do
     visit '/admin/users_admin/new'
