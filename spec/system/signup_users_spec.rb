@@ -5,6 +5,7 @@ RSpec.describe 'User signing up', type: :system, driver: :selenium_chrome, js: t
     Role.connection.execute('ALTER SEQUENCE roles_id_seq RESTART')
   end
   let(:user) do
+    @role = FactoryBot.create(:role)
     @user = FactoryBot.create(:user)
   end
   let(:populate_form) do
