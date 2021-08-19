@@ -5,6 +5,7 @@ RSpec.describe 'logging in users', type: :system, driver: :selenium_chrome, js: 
     Role.connection.execute('ALTER SEQUENCE roles_id_seq RESTART')
   end
   let(:user) do
+    @role = FactoryBot.create(:role)
     @user = FactoryBot.create(:user)
   end
 

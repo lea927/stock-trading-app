@@ -5,9 +5,7 @@ RSpec.describe 'creating users', type: :system, driver: :selenium_chrome, js: tr
     Role.connection.execute('ALTER SEQUENCE roles_id_seq RESTART')
   end
   let(:role) do
-    ['Admin', 'Broker', 'Buyer'].each do |role|
-        Role.find_or_create_by({name: role})
-    end
+    @role = FactoryBot.create(:role)
   end
   let(:admin) do
     @user = User.create!(
@@ -67,7 +65,7 @@ RSpec.describe 'creating users', type: :system, driver: :selenium_chrome, js: tr
       sleep(2)
     end
     it 'validates if saved in database' do
-      User.create!(email:'johndoe_buyer@email.com',password:'johndoe123',role_id: 2, first_name:'John',last_name:'Doe')
+      User.create!(email:'johndoe_buyer@email.com',password:'johndoe123',role_id: 3, first_name:'John',last_name:'Doe')
       user = User.find_by(email:'johndoe_buyer@email.com')
       expect(user).to_not eq nil
     end
