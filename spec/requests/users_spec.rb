@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "users controller", type: :request do
+RSpec.describe 'users controller', type: :request do
   let(:reset_id) do
     Role.connection.execute('ALTER SEQUENCE roles_id_seq RESTART')
   end
@@ -27,11 +27,25 @@ RSpec.describe "users controller", type: :request do
   before :each do
     login_as(@user, :scope => :user)
   end
-  describe "what happens on index" do
-    it "requests all list of users" do
+  describe 'index' do
+    it 'requests all list of users' do
       get users_admin_index_path
       expect(response).to be_successful
       expect(response.body).to include('janedoe_broker@email.com')
+    end
+  end
+  describe 'GET #index' do
+    it 'renders the index template' do
+      get users_admin_index_path
+      expect(response).to render_template('layouts/_header')
+      expect(response).to render_template('users/index')
+    end
+    it 'renders the application layout' do
+      expect(response).to render_template('layouts/application')
+    end
+    it 'does not render a different template' do
+      get users_admin_index_path
+      expect(response).to_not render_template(:show)
     end
   end
 end
