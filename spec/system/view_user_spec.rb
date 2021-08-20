@@ -24,17 +24,20 @@ RSpec.describe 'viewing a user', type: :system, driver: :selenium_chrome, js: tr
     login_as(user)
     visit users_admin_path(id: broker.id)
     expect(page).to have_content(broker.full_name)
+    sleep(2)
   end
 
   it "displays a user's email" do
     login_as(user)
     visit users_admin_path(id: broker.id)
     expect(page).to have_content(broker.email)
+    sleep(2)
   end
 
   it "displays a user's role" do
     login_as(user)
     visit users_admin_path(id: broker.id)
     expect(page).to have_content(broker.role.name)
+    sleep(2)
   end
 end

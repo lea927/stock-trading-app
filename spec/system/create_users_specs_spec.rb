@@ -61,6 +61,7 @@ RSpec.describe 'creating users', type: :system, driver: :selenium_chrome, js: tr
       User.create!(email: 'janedoe_broker@email.com', password: 'janedoe123', role_id: 2, first_name: 'Jane', last_name: 'Doe')
       user = User.find_by(email: 'janedoe_broker@email.com')
       expect(user).not_to eq nil
+      sleep(2)
     end
   end
 
@@ -76,6 +77,7 @@ RSpec.describe 'creating users', type: :system, driver: :selenium_chrome, js: tr
       User.create!(email: 'johndoe_buyer@email.com', password: 'johndoe123', role_id: 3, first_name: 'John', last_name: 'Doe')
       user = User.find_by(email: 'johndoe_buyer@email.com')
       expect(user).not_to eq nil
+      sleep(2)
     end
   end
 end

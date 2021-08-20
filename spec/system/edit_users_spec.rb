@@ -112,6 +112,7 @@ RSpec.describe 'editing users', type: :system, driver: :selenium_chrome, js: tru
       blank_pw
       click_on 'Update User'
       expect(page).to have_content "Password can't be blank"
+      sleep(2)
     end
   end
 end
