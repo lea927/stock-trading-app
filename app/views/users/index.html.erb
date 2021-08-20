@@ -13,7 +13,6 @@
       <td><%= @users.find_index(user)+1 %></td>
       <td><%= user.email %></td>
       <td><%= user.role.name %></td>
-      byebug
       <td>
         <%= link_to 'Show', users_admin_path(user) %>
         <%= link_to 'Edit', edit_users_admin_path(user) %>
