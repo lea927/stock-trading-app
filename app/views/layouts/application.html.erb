@@ -10,7 +10,14 @@
   </head>
   <body>
     <%= render 'layouts/header' %>
-    <%= render 'layouts/notices' %>
-    <%= yield %>
+    <% if notice %>
+      <%= render 'layouts/notices' %>
+    <% end %>
+    <% if alert %>
+      <p><%= alert %></p>
+    <% end %>
+    <div class="container-fluid">
+      <%= yield %>
+    </div>
   </body>
 </html>
