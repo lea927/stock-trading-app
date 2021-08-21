@@ -25,5 +25,6 @@ RSpec.describe 'logging in users', type: :system, driver: :selenium_chrome, js: 
     fill_in 'user_email', with: user.email
     fill_in 'user_password', with: user.password
     click_on 'Log in'
+    sleep(2)
   end
 end

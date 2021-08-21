@@ -29,6 +29,7 @@ class UsersController < ApplicationController
   end
 
   def show; end
+
   def edit; end
 
   def update
@@ -41,7 +42,7 @@ class UsersController < ApplicationController
                            else
                              @user.update_without_password(user_params)
                            end
-  
+
     if successfully_updated
       redirect_to users_admin_path(@user), notice: 'User was successfully updated.'
     else
@@ -69,5 +70,4 @@ class UsersController < ApplicationController
   def needs_password?(_user, params)
     params[:password].present?
   end
-
 end
