@@ -9,7 +9,7 @@ RSpec.describe User, type: :model do
   end
 
   describe 'relationships' do
-    # it { is_expected.to belong_to :role }
-    it { is_expected.to has_many :user_roles }
+    it { is_expected.to belong_to :role }
+    # it { is_expected.to has_many :user_roles }
   end
 end
