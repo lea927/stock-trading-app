@@ -1,0 +1,8 @@
+<table>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.email %>
+      <td><%= user.approved %>
+    </tr>
+  <% end %>
+</table>
