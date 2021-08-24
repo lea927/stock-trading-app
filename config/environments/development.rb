@@ -61,7 +61,7 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
-  config.action_mailer.delivery_method = :sendmail
+  # config.action_mailer.delivery_method = :sendmail
 # Defaults to:
 # config.action_mailer.sendmail_settings = {
 #   location: '/usr/sbin/sendmail',
@@ -75,9 +75,11 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
   address:              'smtp.gmail.com',
   port:                 587,
-  domain:               'example.com', #change to domain name
+  domain:               'smtp.gmail.com', #change to domain name
   user_name:            ENV["MAILER_EMAIL"],
   password:             ENV["MAILER_PASSWORD"],
   authentication:       'plain',
-  enable_starttls_auto: true  }
+  enable_starttls_auto: true,
+  openssl_verify_mode: "none",
+ }
 end
