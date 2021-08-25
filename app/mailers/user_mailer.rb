@@ -1,7 +1,7 @@
 class UserMailer < ApplicationMailer
 
-    def welcome_email(user)
-        @user = user
+    def welcome_email
+        @user = params[:user]
         mail(to: @user.email, subject: 'Welcome to Stockit')
     end
 end
