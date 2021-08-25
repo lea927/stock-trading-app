@@ -20,7 +20,7 @@ RSpec.describe UserMailer, :type => :mailer do
       end
     
     it "sends welcome email" do
-        expect { UserMailer.welcome_email(buyer).deliver_now }.to change { ActionMailer::Base.deliveries.count }.by(1)
+        expect { UserMailer.with(user: buyer).welcome_email.deliver_now }.to change { ActionMailer::Base.deliveries.count }.by(1)
         mail = ActionMailer::Base.deliveries.last
         expect(mail.subject).to eq 'Welcome to Stockit'
         expect(mail.from).to include "tom.stockit@gmail.com"
