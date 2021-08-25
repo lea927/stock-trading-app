@@ -1,4 +1,17 @@
-<%# This will contain the actual body of the email, formatted using HTML %>
-<h1>Welcome to Stockit, <%= @user.first_name %></h1>
-<p>You have successfully created an account.</p>
-<p>Thanks for joining and have a great day!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+    <h1>Welcome to Stockit!</h1>
+    <p>Hi <%= @user.first_name %>,</p>
+    <% if @user.broker? %>
+    <p>Thank you for your interest in joining our platform! Your account is currently pending as it has not yet been approved by your administrator.</p>
+    <p>A confirmation email will be sent once your account has been approved.</p>
+    <% else %>
+    <p>You have successfully created an account.</p>
+    <% end %>
+    <p>Thank you and have a great day!</p>
+</body>
+</html>

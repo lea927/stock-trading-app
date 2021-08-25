@@ -1,4 +1,10 @@
-Welcome to Stockit, <%= @user.first_name %>
+Welcome to Stockit!
 ===============================================
+Hi <%= @user.first_name %>,
+<% if @user.broker? %>
+Thank you for your interest in joining our platform! Your account is currently pending as it has not yet been approved by your administrator.
+A confirmation email will be sent once your account has been approved.
+<% else %>
 You have successfully created an account.
-Thanks for joining and have a great day!
+<% end %>
+Thank you and have a great day!
