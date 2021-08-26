@@ -7,6 +7,8 @@ class User < ApplicationRecord
 
   validates :first_name, :last_name, :email, :password, presence: true
 
+  before_save :default_values
+
   def full_name
     "#{first_name} #{last_name}"
   end
@@ -21,5 +23,17 @@ class User < ApplicationRecord
 
   def buyer?
     self.role.name == 'Buyer'
+  end
+
+  def default_values
+    self.approved = 'true' unless self.role.name == 'Broker'
+  end
+
+  def active_for_authentication? 
+    super && approved? 
+  end 
+  
+  def inactive_message 
+    approved? ? super : :not_approved
   end
 end
