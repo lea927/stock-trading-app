@@ -2,6 +2,7 @@
   <% @unapproved_users.each do |user| %>
     <tr>
       <td><%= user.email %>
+      <%= link_to 'Approve', broker_path(user), method: :patch  %>
     </tr>
   <% end %>
 </table>
