@@ -11,7 +11,7 @@ RSpec.describe 'viewing a user', type: :system, driver: :selenium_chrome, js: tr
     @user = FactoryBot.create(:user)
   end
   let(:broker) do
-    @broker = User.create!(email: 'janedoe_broker@email.com', password: 'janedoe123', role_id: 2, first_name: 'Jane', last_name: 'Doe')
+    @broker = User.create!(email: 'janedoe_broker@email.com', password: 'janedoe123', role_id: 2, first_name: 'Jane', last_name: 'Doe', approved: true)
   end
 
   before do
@@ -24,20 +24,20 @@ RSpec.describe 'viewing a user', type: :system, driver: :selenium_chrome, js: tr
     login_as(user)
     visit users_admin_path(id: broker.id)
     expect(page).to have_content(broker.full_name)
-    sleep(2)
+    sleep(1)
   end
 
   it "displays a user's email" do
     login_as(user)
     visit users_admin_path(id: broker.id)
     expect(page).to have_content(broker.email)
-    sleep(2)
+    sleep(1)
   end
 
   it "displays a user's role" do
     login_as(user)
     visit users_admin_path(id: broker.id)
     expect(page).to have_content(broker.role.name)
-    sleep(2)
+    sleep(1)
   end
 end

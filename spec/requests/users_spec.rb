@@ -13,7 +13,7 @@ RSpec.describe 'users controller', type: :request do
     @user = FactoryBot.create(:user)
   end
   let(:create_user) do
-    User.create!(email: 'janedoe_broker@email.com', password: 'janedoe123', role_id: 2, first_name: 'Jane', last_name: 'Doe')
+    User.create!(email: 'janedoe_broker@email.com', password: 'janedoe123', role_id: 2, first_name: 'Jane', last_name: 'Doe', approved: true)
   end
   let(:login_user) do
     login_as(@user, scope: :user)

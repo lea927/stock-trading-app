@@ -73,15 +73,23 @@ RSpec.describe 'editing users', type: :system, driver: :selenium_chrome, js: tru
   describe 'edit a user' do
     it 'validates the path' do
       visit edit_users_admin_path(id: broker.id)
+      sleep(1)
       expect(page).to have_current_path edit_users_admin_path(id: broker.id)
-      sleep(2)
     end
 
     it 'fills out with complete details' do
       visit edit_users_admin_path(id: broker.id)
       fillout_form
+      sleep(1)
       click_on 'Update User'
-      sleep(2)
+    end
+    
+    it 'fills out without password' do
+      visit edit_users_admin_path(id: broker.id)
+      blank_pw
+      click_on 'Update User'
+      sleep(1)
+      expect(page).to have_content "User was successfully updated."
     end
   end
 
@@ -89,30 +97,22 @@ RSpec.describe 'editing users', type: :system, driver: :selenium_chrome, js: tru
     it 'fills out without first name' do
       visit edit_users_admin_path(id: broker.id)
       blank_firstname
+      sleep(1)
       click_on 'Update User'
-      sleep(2)
     end
 
     it 'fills out without last name' do
       visit edit_users_admin_path(id: broker.id)
       blank_lastname
+      sleep(1)
       click_on 'Update User'
-      sleep(2)
     end
 
     it 'fills out without email' do
       visit edit_users_admin_path(id: broker.id)
       blank_email
+      sleep(1)
       click_on 'Update User'
-      sleep(2)
-    end
-
-    it 'fills out without password' do
-      visit edit_users_admin_path(id: broker.id)
-      blank_pw
-      click_on 'Update User'
-      expect(page).to have_content "Password can't be blank"
-      sleep(2)
     end
   end
 end
