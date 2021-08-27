@@ -46,7 +46,7 @@ RSpec.describe 'creating users', type: :system, driver: :selenium_chrome, js: tr
   it 'validates path if correct' do
     visit '/admin/users_admin/new'
     expect(page).to have_current_path new_users_admin_path
-    sleep(2)
+    sleep(1)
   end
 
   describe 'creates a broker user' do
@@ -54,14 +54,14 @@ RSpec.describe 'creating users', type: :system, driver: :selenium_chrome, js: tr
       visit '/admin/users_admin/new'
       fillout_broker
       click_on 'Create User'
-      sleep(2)
+      sleep(1)
     end
 
     it 'validates if saved in database' do
       User.create!(email: 'janedoe_broker@email.com', password: 'janedoe123', role_id: 2, first_name: 'Jane', last_name: 'Doe')
       user = User.find_by(email: 'janedoe_broker@email.com')
       expect(user).not_to eq nil
-      sleep(2)
+      sleep(1)
     end
   end
 
@@ -70,14 +70,14 @@ RSpec.describe 'creating users', type: :system, driver: :selenium_chrome, js: tr
       visit '/admin/users_admin/new'
       fillout_buyer
       click_on 'Create User'
-      sleep(2)
+      sleep(1)
     end
 
     it 'validates if saved in database' do
       User.create!(email: 'johndoe_buyer@email.com', password: 'johndoe123', role_id: 3, first_name: 'John', last_name: 'Doe')
       user = User.find_by(email: 'johndoe_buyer@email.com')
       expect(user).not_to eq nil
-      sleep(2)
+      sleep(1)
     end
   end
 end
