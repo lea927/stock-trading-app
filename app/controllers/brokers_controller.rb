@@ -12,6 +12,7 @@ class BrokersController < ApplicationController
     @user = User.find(params[:id])
     @user.update(:approved=>true)
     redirect_to brokers_path, notice: 'Broker was successfully approved.'
+    UserMailer.with(user: @user).approved_email.deliver_now
   end
 
   private
