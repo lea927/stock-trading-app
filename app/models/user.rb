@@ -5,8 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   belongs_to :role
 
-  validates :first_name, :last_name, :email, :password, presence: true
-
+  validates :first_name, :last_name, :email, presence: true
+  validates :password, presence: true, :if => :password
   before_save :default_values
 
   def full_name

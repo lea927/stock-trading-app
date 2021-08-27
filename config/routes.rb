@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   scope '/admin' do
     resources :users_admin, :controller => 'users'
-    resources :brokers, only: [:index]
+    resources :brokers, only: [:index,:update]
   end
 end
