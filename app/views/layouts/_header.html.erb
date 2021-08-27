@@ -1,13 +1,24 @@
 <header>
-  <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+  <nav class="navbar navbar-expand-md shadow p-3 mb-4 bg-light">
     <div class="container-fluid">
-      <%= link_to "Stock App", root_path, class: 'navbar-brand' %>
+      <%= link_to "Stockit", root_path, class: 'navbar-brand' %>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <%# insert custom nav items depending on user role %>
+          <% if current_user&.admin? %>
+            <% if current_page?(users_admin_index_path) %>
+              <li><%= link_to "All Users", users_admin_index_path, class: 'btn btn-outline-secondary mx-2 text-decoration-none active' %></li>
+              <li><%= link_to "Pending Brokers", brokers_path, class: 'btn btn-outline-secondary mx-2 text-decoration-none'%></li>
+            <% elsif current_page?(brokers_path) %>
+              <li><%= link_to "All Users", users_admin_index_path, class: 'btn btn-outline-secondary mx-2 text-decoration-none' %></li>
+              <li><%= link_to "Pending Brokers", brokers_path, class: 'btn btn-outline-secondary mx-2 text-decoration-none active'%></li>
+            <% else %>
+              <li><%= link_to "All Users", users_admin_index_path, class: 'btn btn-outline-secondary mx-2 text-decoration-none' %></li>
+              <li><%= link_to "Pending Brokers", brokers_path, class: 'btn btn-outline-secondary mx-2 text-decoration-none'%></li>
+            <% end %>
+          <% end %>
         </ul>
         <ul class="navbar-nav ml-auto">
           <% if user_signed_in? %>
@@ -23,10 +34,10 @@
             </li>
           <% else %>
             <li class="nav-item">
-              <%= link_to "Login", new_user_session_path, class: 'btn btn-primary mx-2' %>
+              <%= link_to "Login", new_user_session_path, class: 'btn btn-outline-primary mx-2' %>
             </li>
             <li class="nav-item">
-              <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-outline-light' %>
+              <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary' %>
             </li>
           <% end %>
         </ul>
