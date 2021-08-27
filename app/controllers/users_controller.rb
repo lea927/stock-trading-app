@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   def index
     # admin users are not displayed in table
-    @users = User.select { |user| user.broker? || user.buyer? }
+    @users = User.where(approved: true).select { |user| user.broker? || user.buyer? }
   end
 
   def new
