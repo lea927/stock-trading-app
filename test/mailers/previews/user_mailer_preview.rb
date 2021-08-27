@@ -10,4 +10,9 @@ class UserMailerPreview < ActionMailer::Preview
     user = User.new(first_name: 'Jane', last_name: 'Doe', email: "janedoe@gmail.com", password: 'jane123',role_id: 3)
     UserMailer.with(user: user).welcome_email
   end
+
+  def approved_broker_email
+    user = User.new(first_name: 'Jane', last_name: 'Doe', email: "janedoe@gmail.com", password: 'jane123',role_id: 2)
+    UserMailer.with(user: user).approved_email
+  end
 end
