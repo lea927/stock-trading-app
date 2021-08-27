@@ -12,6 +12,6 @@ end
 User.create!(
     first_name: 'Tom',
     last_name: 'Reid',
-    email: 'tom_admin@email.com',
-    password: 'tom_admin123',
+    email: ENV['ADMIN_EMAIL'],
+    password: ENV['ADMIN_PASSWORD'],
     role_id: 1)
