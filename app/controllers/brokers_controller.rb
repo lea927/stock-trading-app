@@ -1,17 +1,17 @@
 class BrokersController < ApplicationController
   before_action :authenticate_user!
-
-  def index
-    # if params[:approved] == "false"
-    @unapproved_users = User.where(approved: false)
+  before_action do
+    redirect_to brokers_path unless current_user.admin?
   end
 
-  def edit; end
+  def index
+    @unapproved_users = User.where(approved: false)
+  end
 
   def update 
     @user = User.find(params[:id])
     @user.update(:approved=>true)
-    redirect_to brokers_path, notice: "Broker was successfully approved."
+    redirect_to brokers_path, notice: 'Broker was successfully approved.'
   end
 
   private
