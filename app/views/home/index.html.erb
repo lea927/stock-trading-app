@@ -1,12 +1,12 @@
 <div>
   <% if user_signed_in? %>
-    <h3 class="mt-4">Hi, <%= current_user.first_name %></h3>
+    <p class="mt-4">Hi, <%= current_user.first_name %></p>
   <% end %>
   <div class="d-flex flex-column align-items-center justify-content-center">
     <br>
     <% if !user_signed_in? %>
-      <h2>Welcome to Stock Trading App</h2>
-      <%= link_to "Join Now", new_user_registration_path, class: 'btn btn-primary' %>
+      <h2>Welcome to Stockit</h2>
+      <%= link_to "Join Now", new_user_registration_path, class: 'btn btn-primary btn-large' %>
     <% end %>
   </div>
 </div>
