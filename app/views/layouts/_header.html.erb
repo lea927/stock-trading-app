@@ -27,7 +27,7 @@
             <% else %>
               <li><%= link_to "All Users", users_admin_index_path, class: 'btn btn-outline-secondary mx-2 text-decoration-none' %></li>
               <li class='mx-2 position-relative'>
-                <%= link_to "Pending Brokers", brokers_path, class: 'btn btn-outline-secondary text-decoration-none active'%>
+                <%= link_to "Pending Brokers", brokers_path, class: 'btn btn-outline-secondary text-decoration-none'%>
                 <span class='position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger'>
                 <%= @unapproved_users.count %>
               </li>
