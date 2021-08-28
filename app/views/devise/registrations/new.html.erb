@@ -1,5 +1,5 @@
-<h2 class="text-center">Sign Up</h2>
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'mx-auto mt-4 col-md-6'}) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'mx-auto mt-4 col-md-6 shadow p-3 position-absolute top-50 start-50 translate-middle'}) do |f| %>
+  <h2 class="text-center">Sign Up</h2>
   <%= render "devise/shared/error_messages", resource: resource %>
   <p>Type of Account: </p>
   <div class="d-flex justify-content-center">
