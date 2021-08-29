@@ -33,7 +33,9 @@
   </div>
   <div class='actions d-flex flex-column justify-content-center mt-2'>
     <%= form.submit %>
-    <div class='align-self-center'><%= link_to 'Cancel', users_admin_index_path %></div>
+    <div class='align-self-center'>
+      <%= link_to 'Cancel', users_admin_index_path, class: 'btn btn-outline-dark btn-sm m-2' %>
+    </div>
   </div>
   
 <% end %>
