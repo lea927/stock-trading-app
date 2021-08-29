@@ -13,26 +13,26 @@
     </div>
   </div>
   <div class='field'>
-    <%= f.label :first_name, 'First Name', class: 'form-label' %><br />
+    <%= f.label :first_name, 'First Name', class: 'form-label' %>
     <%= f.text_field :first_name, autofocus: true, class: 'form-control' %>
   </div>
   <div class='field'>
-    <%= f.label :last_name, 'Last Name', class: 'form-label' %><br />
+    <%= f.label :last_name, 'Last Name', class: 'form-label' %>
     <%= f.text_field :last_name, autofocus: true, class: 'form-control' %>
   </div>
   <div class='field'>
-    <%= f.label :email, class: 'form-label' %><br />
+    <%= f.label :email, class: 'form-label' %>
     <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
   </div>
   <div class='field'>
     <%= f.label :password, class: 'form-label' %>
     <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
+    <% end %>
     <%= f.password_field :password, autocomplete: 'new-password', class: 'form-control' %>
   </div>
   <div class='field'>
-    <%= f.label :password_confirmation, class: 'form-label' %><br />
+    <%= f.label :password_confirmation, class: 'form-label' %>
     <%= f.password_field :password_confirmation, autocomplete: 'new-password', class: 'form-control' %>
   </div>
   <div class='actions d-flex flex-column justify-content-center mt-2'>
