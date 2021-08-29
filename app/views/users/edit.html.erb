@@ -1,38 +1,39 @@
-<h1>Edit User</h1>
-<%= form_for @user, url: users_admin_path(@user)  do |form| %>
+<%= form_for @user, url: users_admin_path(@user),html: { class: 'mx-auto mt-4 col-md-6 shadow p-3 position-absolute top-50 start-50 translate-middle'}  do |form| %>
+  <h2 class='text-center'>Edit User</h2>
   <% if @user.errors.any? %>
-    <div id="error_explanation">
+    <div id='error_explanation'>
       <% @user.errors.full_messages.each do |error| %>
         <p><%= error %></p>
       <% end %>
     </div>
   <% end %>
   <%= collection_select(:user, :role_id, Role.all, :id, :name, { prompt: true } ) %>
-  <div class="field">
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name %>
+  <div class='field'>
+    <%= form.label :first_name, class: 'form-label' %>
+    <%= form.text_field :first_name, class: 'form-control' %>
   </div>
-  <div class="field">
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name %>
+  <div class='field'>
+    <%= form.label :last_name, class: 'form-label' %>
+    <%= form.text_field :last_name, class: 'form-control' %>
   </div>
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.email_field :email %>
+  <div class='field'>
+    <%= form.label :email, class: 'form-label' %>
+    <%= form.email_field :email, class: 'form-control' %>
   </div>
-  <div class="field">
-    <%= form.label :password %>
+  <div class='field'>
+    <%= form.label :password, class: 'form-label' %>
     <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> characters minimum)</em><br>
     <% end %>
-    <%= form.password_field :password %>
+    <%= form.password_field :password, class: 'form-control'%>
   </div>
-  <div class="field">
-    <%= form.label :password, 'Confirm Password' %>
-    <%= form.password_field :password_confirmation %>
+  <div class='field'>
+    <%= form.label :password, 'Confirm Password' , class: 'form-label'%>
+    <%= form.password_field :password_confirmation , class: 'form-control'%>
   </div>
-  <div>
+  <div class='actions d-flex flex-column justify-content-center mt-2'>
     <%= form.submit %>
+    <div class='align-self-center'><%= link_to 'Cancel', users_admin_index_path %></div>
   </div>
+  
 <% end %>
-<%= link_to 'Cancel', users_admin_index_path %>
