@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update]
+  before_action :unapproved_users
   before_action :authenticate_user!
   before_action do
     redirect_to root_path unless current_user.admin?
@@ -51,6 +52,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def unapproved_users 
+    @unapproved_users = User.where(approved: false)
+  end
+
   private
 
   def set_user
@@ -71,4 +76,6 @@ class UsersController < ApplicationController
   def needs_password?(_user, params)
     params[:password].present?
   end
+
+  
 end
