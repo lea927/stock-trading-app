@@ -1,8 +1,27 @@
-<table>
-  <% @unapproved_users.each do |user| %>
+<div class="mx-4">
+  <div class="d-flex justify-content-between mx-4">
+    <p>You are logged in as: <strong><%= current_user.email %></strong></p>
+  </div>
+  <table class='table table-bordered table-hover mt-4'>
+  <thead class="thead-dark">
     <tr>
-      <td><%= user.email %>
-      <%= link_to 'Approve', broker_path(user), method: :patch  %>
+      <th>ID</th>
+      <th>Full Name</th>
+      <th>Email</th>
+      <th>Account</th>
+      <th>Actions</th>
     </tr>
-  <% end %>
-</table>
+  </thead>
+    <% @unapproved_users.each do |user| %>
+      <tbody>
+        <tr>
+          <td><%= user.id %></td>
+          <td><%= user.full_name %></td>
+          <td><%= user.email %></td>
+          <td><%= user.role.name %></td>
+          <td><%= link_to 'Approve', broker_path(user), method: :patch, class: 'btn btn-primary btn-sm w-100'%></td>
+        </tr>
+      </tbody>
+    <% end %>
+  </table>
+</div>

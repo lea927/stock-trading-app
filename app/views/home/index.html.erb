@@ -1,12 +1,14 @@
-<div>
+<div class='position-absolute top-50 start-50 translate-middle'>
   <% if user_signed_in? %>
     <p class="mt-4">Hi, <%= current_user.first_name %></p>
   <% end %>
   <div class="d-flex flex-column align-items-center justify-content-center">
     <br>
     <% if !user_signed_in? %>
-      <h2>Welcome to Stockit</h2>
-      <%= link_to "Join Now", new_user_registration_path, class: 'btn btn-primary btn-large' %>
+      <h1 class='display-2 fw-bold'>Welcome to Stockit</h1>
+      <h2 class='display-6'>Designed to <span class='mark'>earn</span> you more.</h2>
+      <p>If you need to keep track of your stocks of any kind - this application can help you to do it.</p>
+      <%= link_to "Get Started", new_user_registration_path, class: 'btn btn-lg btn-primary btn-large' %>
     <% end %>
   </div>
 </div>

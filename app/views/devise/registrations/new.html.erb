@@ -1,44 +1,44 @@
-<h2 class="text-center">Sign Up</h2>
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'mx-auto mt-4 col-md-6'}) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'mx-auto mt-4 col-md-6 shadow p-3 position-absolute top-50 start-50 translate-middle'}) do |f| %>
+  <h2 class='text-center'>Sign Up</h2>
+  <%= render 'devise/shared/error_messages', resource: resource %>
   <p>Type of Account: </p>
-  <div class="d-flex justify-content-center">
-    <div class="form-check mx-2">
+  <div class='d-flex justify-content-center'>
+    <div class='form-check mx-2'>
       <%= f.radio_button(:role_id, 2, class:'form-check-input') %>
       <%= f.label :role_id, 'Broker', :value => 2, class: 'form-check-label' %>
     </div>
-    <div class="form-check mx-2">
+    <div class='form-check mx-2'>
       <%= f.radio_button(:role_id, 3, class:'form-check-input') %>
       <%= f.label :role_id, 'Buyer', :value => 3, class: 'form-check-label' %>
     </div>
   </div>
-  <div class="field">
-    <%= f.label :first_name, 'First Name', class: 'form-label' %><br />
+  <div class='field'>
+    <%= f.label :first_name, 'First Name', class: 'form-label' %>
     <%= f.text_field :first_name, autofocus: true, class: 'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :last_name, 'Last Name', class: 'form-label' %><br />
+  <div class='field'>
+    <%= f.label :last_name, 'Last Name', class: 'form-label' %>
     <%= f.text_field :last_name, autofocus: true, class: 'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :email, class: 'form-label' %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+  <div class='field'>
+    <%= f.label :email, class: 'form-label' %>
+    <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class='field'>
     <%= f.label :password, class: 'form-label' %>
     <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
+    <% end %>
+    <%= f.password_field :password, autocomplete: 'new-password', class: 'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :password_confirmation, class: 'form-label' %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
+  <div class='field'>
+    <%= f.label :password_confirmation, class: 'form-label' %>
+    <%= f.password_field :password_confirmation, autocomplete: 'new-password', class: 'form-control' %>
   </div>
-  <div class="actions d-flex flex-column justify-content-center mt-2">
-    <%= f.submit "Sign up", class: 'btn btn-primary my-2' %>
-    <div class="align-self-center">
-      Already have an account? <%= render "devise/shared/links" %>
+  <div class='actions d-flex flex-column justify-content-center mt-2'>
+    <%= f.submit 'Sign up', class: 'btn btn-primary my-2' %>
+    <div class='align-self-center'>
+      Already have an account? <%= render 'devise/shared/links' %>
     </div>
   </div>
 <% end %>
