@@ -32,10 +32,9 @@
     <%= form.password_field :password_confirmation , class: 'form-control'%>
   </div>
   <div class='actions d-flex flex-column justify-content-center mt-2'>
-    <%= form.submit %>
-    <div class='align-self-center'>
-      <%= link_to 'Cancel', users_admin_index_path, class: 'btn btn-outline-dark btn-sm m-2' %>
+    <%= form.submit class: 'btn btn-primary' %>
+    <div>
+      <%= link_to 'Cancel', users_admin_index_path, class: 'btn btn-outline-dark btn-sm my-2 w-100' %>
     </div>
   </div>
-  
 <% end %>
