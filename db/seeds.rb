@@ -9,13 +9,6 @@
     Role.find_or_create_by({name: role})
 end
 
-# User.create!(
-#     first_name: 'Tom',
-#     last_name: 'Reid',
-#     email: ENV['ADMIN_EMAIL'],
-#     password: ENV['ADMIN_PASSWORD'],
-#     role_id: 1)
-
 User.create!([
     { first_name: 'Tom', last_name: 'Reid', email: ENV['ADMIN_EMAIL'], password: ENV['ADMIN_PASSWORD'], role_id: 1},
     { first_name: 'Jane', last_name: 'Doe', email: 'janedoe@email.com', password: '123qwe', role_id: 2 },

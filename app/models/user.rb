@@ -4,7 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   belongs_to :role
-
+  has_many :transactions
+  has_many :stocks, through: :transactions
+  
   validates :first_name, :last_name, :email, presence: true
   validates :password, presence: true, :if => :password
   before_save :default_values
