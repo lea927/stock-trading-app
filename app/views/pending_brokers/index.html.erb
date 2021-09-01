@@ -19,7 +19,7 @@
           <td><%= user.full_name %></td>
           <td><%= user.email %></td>
           <td><%= user.role.name %></td>
-          <td><%= link_to 'Approve', broker_path(user), method: :patch, class: 'btn btn-primary btn-sm w-100'%></td>
+          <td><%= link_to 'Approve', pending_broker_path(user), method: :patch, class: 'btn btn-primary btn-sm w-100'%></td>
         </tr>
       </tbody>
     <% end %>
