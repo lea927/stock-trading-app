@@ -1,0 +1,24 @@
+<p>My Portfolio</p>
+<%= "Your portfolio is empty" if current_user.stocks.empty? %>
+<% if !current_user.stocks.empty? %>
+  <table class='table table-bordered table-hover mt-4'>
+    <thead class="thead-dark">
+      <tr>
+        <th>Symbol</th>
+        <th>Company Name</th>
+        <th>Price</th>
+        <th>Shares</th>
+      </tr>
+    </thead>
+    <% @stocks.each do |stock| %>
+      <tbody>
+        <tr>
+          <td><%= stock.symbol %></td>
+          <td><%= stock.company_name %></td>
+          <td><%= stock.price %></td>
+          <td></td>
+        </tr>
+      </tbody>
+    <% end %>
+  </table>
+<% end %>
