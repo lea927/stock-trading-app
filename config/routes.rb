@@ -8,4 +8,5 @@ Rails.application.routes.draw do
     resources :users_admin, :controller => 'users'
     resources :brokers, only: [:index,:update]
   end
+  get 'my_portfolio', to:'transactions#my_portfolio'
 end
