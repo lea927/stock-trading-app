@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :pending_brokers, only: [:index, :update]
   end
   get 'my_portfolio', to:'transactions#my_portfolio'
+  get 'buyer_stock_market', to:'transactions#buyer_stock_market'
   get 'search_stock', to: 'stocks#search'
   get 'stocks/search'
   resources :transactions, only: [:create]
