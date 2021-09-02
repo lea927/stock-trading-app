@@ -9,4 +9,6 @@ Rails.application.routes.draw do
     resources :pending_brokers, only: [:index, :update]
   end
   get 'my_portfolio', to:'transactions#my_portfolio'
+  get 'search_stock', to: 'stocks#search'
+  get 'stocks/search'
 end
