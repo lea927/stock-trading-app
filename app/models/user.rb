@@ -38,4 +38,12 @@ class User < ApplicationRecord
   def inactive_message 
     approved? ? super : :not_approved
   end
+
+  def has_stock?(symbol)
+    #checks if broker already has this stock in portfolio
+     stock = Stock.search_db(symbol)
+     return false unless stock
+     stocks.where(id: stock.id).exists?
+  end
+
 end
