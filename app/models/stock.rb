@@ -15,7 +15,7 @@ class Stock < ApplicationRecord
   def self.new_lookup(symbol)
     client = self.iex_api
     begin
-      new(symbol: symbol, company_name: client.quote(symbol).company_name, price: client.quote(symbol).latest_price)
+      new(symbol: symbol.upcase, company_name: client.quote(symbol).company_name, price: client.quote(symbol).latest_price)
     rescue StandardError
       #return nil in order to display a message through the controller when error is caught 
       nil
