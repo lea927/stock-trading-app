@@ -11,7 +11,7 @@ class PendingBrokersController < ApplicationController
   def update 
     @user = User.find(params[:id])
     @user.update(:approved=>true)
-    redirect_to brokers_path, notice: 'Broker was successfully approved.'
+    redirect_to pending_brokers_path, notice: 'Broker was successfully approved.'
     UserMailer.with(user: @user).approved_email.deliver_now
   end
 

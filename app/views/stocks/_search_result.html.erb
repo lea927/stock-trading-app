@@ -1,0 +1,21 @@
+<% if notice %>
+  <%= render 'layouts/notices' %>
+<% end %>
+<% if @stock %>
+  <div class="card my-2 shadow">
+    <div class="card-body d-flex justify-content-around align-items-center">
+      <span>Symbol: <strong><%= @stock.symbol %></strong></span>
+      <span>Company: <strong><%= @stock.company_name %></strong></span>
+      <span>Price: <strong>$<%= @stock.price %></strong></span>
+      <% if current_user.broker? %>
+        <% if current_user.has_stock?(@stock.symbol) %>
+          <span class="text-danger text-center">Already added to portfolio</span>
+        <% else %>
+          <%= link_to "Add", transactions_path(user: current_user, symbol: @stock.symbol), 
+                          method: :post,
+                          class: 'btn btn-xs btn-primary' %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

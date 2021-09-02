@@ -1,0 +1,7 @@
+<% if current_page?(my_portfolio_path) %>
+  <li><%= link_to "My Portfolio", my_portfolio_path, class: 'btn btn-outline-secondary mx-2 text-decoration-none active' %></li>
+  <li><%= link_to "Search Stocks", stocks_search_path, class: 'btn btn-outline-secondary mx-2 text-decoration-none' %></li>
+<% else %>
+  <li><%= link_to "My Portfolio", my_portfolio_path, class: 'btn btn-outline-secondary mx-2 text-decoration-none' %></li>
+  <li><%= link_to "Search Stocks", stocks_search_path, class: 'btn btn-outline-secondary mx-2 text-decoration-none active' %></li>
+<% end %>
