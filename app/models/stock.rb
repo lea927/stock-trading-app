@@ -1,7 +1,8 @@
 class Stock < ApplicationRecord
   has_many :transactions
   has_many :users, through: :transactions
-
+  validates :symbol, { presence: true, uniqueness: true }
+  
   #self: don't need an instance of stock class. can directly call this method from the class
   def self.iex_api
     IEX::Api::Client.new(
@@ -13,6 +14,11 @@ class Stock < ApplicationRecord
 
   def self.new_lookup(symbol)
     client = self.iex_api
-    new(symbol: symbol, company_name: client.quote(symbol).company_name, price: client.quote(symbol).latest_price)
+    begin
+      new(symbol: symbol, company_name: client.quote(symbol).company_name, price: client.quote(symbol).latest_price)
+    rescue StandardError
+      #return nil in order to display a message through the controller when error is caught 
+      nil
+    end
   end
 end
