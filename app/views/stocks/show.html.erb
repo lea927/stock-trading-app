@@ -13,7 +13,7 @@
           <p class='border-top border-bottom m-0 p-1'><strong> 52 Week Range: </strong>$<%= @stock_quote.week_52_low %> - $<%= @stock_quote.week_52_high %></p>
         </div>
         <div class='col-6'>
-          <p class='border-top border-bottom m-0 p-1'><strong> Market Cap: </strong><%= @market_cap %></p>
+          <p class='border-top border-bottom m-0 p-1'><strong> Market Cap: </strong><%= number_to_currency(number_to_human(@market_cap)) %></p>
           <p class='border-top border-bottom m-0 p-1'><strong>  P/E Ratio: </strong><%= @stock_quote.pe_ratio %></p>
           <p class='border-top border-bottom m-0 p-1'><strong>  Beta: </strong><%= @beta %></p>
         </div>

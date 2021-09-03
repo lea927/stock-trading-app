@@ -27,7 +27,7 @@ class StocksController < ApplicationController
     @stock_quote = client.quote(@stock.symbol)
     @logo = client.logo(@stock.symbol)
     @company = client.company(@stock.symbol)
-    @market_cap = @stock_quote.market_cap.to_s.chars.reverse.each_slice(3).map(&:join).join(",").reverse
+    @market_cap = @stock_quote.market_cap
     @beta = client.key_stats(@stock.symbol).beta.round(2)
   end
 end
