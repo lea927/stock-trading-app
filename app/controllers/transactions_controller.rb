@@ -13,4 +13,8 @@ class TransactionsController < ApplicationController
       flash[:notice] = "#{stock.company_name} was successfully added to your portfolio"
       redirect_to my_portfolio_path
     end
+
+    def buyer_stock_market
+      @stocks = User.find_by(role_id: 2, approved: true).stocks
+    end
 end
