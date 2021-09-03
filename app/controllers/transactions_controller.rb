@@ -16,6 +16,10 @@ class TransactionsController < ApplicationController
       @stocks = User.find_by(role_id: 2, approved: true).stocks
     end
 
+    def show
+      @stock = Stock.find(params[:id])
+    end
+
     def save_transaction
       @transaction = Transaction.create!(user: current_user, stock: @stock)
       flash[:notice] = "#{@stock.company_name} was successfully added to your portfolio"

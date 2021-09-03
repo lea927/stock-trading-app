@@ -5,7 +5,7 @@
         <th>Symbol</th>
         <th>Company Name</th>
         <th>Price</th>
-        <%# <th>Actions</th> %>
+        <th>Actions</th>
       </tr>
     </thead>
     <% @stocks.each do |stock| %>
@@ -14,6 +14,7 @@
           <td><%= stock.symbol %></td>
           <td><%= stock.company_name %></td>
           <td><%= stock.price %></td>
+          <td><%= link_to 'Show', transaction_path(stock), method: :get, class: 'btn btn-success btn-sm w-100'%></td>
         </tr>
       </tbody>
     <% end %>
