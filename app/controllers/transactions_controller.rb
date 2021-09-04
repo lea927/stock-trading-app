@@ -16,6 +16,10 @@ class TransactionsController < ApplicationController
       @stocks = User.find_by(role_id: 2, approved: true).stocks
     end
 
+    def new
+      @transaction = Transaction.new
+    end
+
     def show
       @stock = Stock.find(params[:id])
     end

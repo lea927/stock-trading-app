@@ -1,0 +1,6 @@
+<%= form_with(model: transaction) do |f| %>
+    <h2><%= @stock.company_name %></h2>
+    <%= f.label :price %>
+    <%= f.text_field :price, value: @stock.price, readonly: true %>
+    <%= f.submit %>
+<% end %>
