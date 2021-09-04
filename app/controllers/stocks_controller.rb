@@ -20,4 +20,14 @@ class StocksController < ApplicationController
       nil
     end
   end
+
+  def show 
+    client = Stock.iex_api
+    @stock = Stock.find(params[:id])
+    @stock_quote = client.quote(@stock.symbol)
+    @logo = client.logo(@stock.symbol)
+    @company = client.company(@stock.symbol)
+    @market_cap = @stock_quote.market_cap
+    @beta = client.key_stats(@stock.symbol).beta.round(2)
+  end
 end

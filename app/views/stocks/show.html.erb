@@ -1,0 +1,23 @@
+<div class='container-fluid'>
+  <div class="card col-md-9 col-lg-6 mx-auto">
+    <div class="card-body">
+      <img class='m-2' src=<%= @logo.url %> alt="stock-logo">
+      <h2 class='fs-4'><%= @stock.company_name %> <span class='fs-5 text-muted'>(<%= @stock.symbol %>)</span></h2>
+      <p class='fs-6 m-0'> <strong>CEO:</strong> <%= @company.ceo %></p>
+      <p class='fs-6'><%= @company.description %></p>
+      <p class='lead'>Key Data</p>
+      <div class='row'>
+        <div class='col-6'>
+          <p class='border-top border-bottom m-0 p-1'><strong>Sector: </strong><%= @company.sector %></p>
+          <p class='border-top border-bottom m-0 p-1'><strong> Previous Close: $</strong><%= @stock_quote.previous_close %></p>
+          <p class='border-top border-bottom m-0 p-1'><strong> 52 Week Range: </strong>$<%= @stock_quote.week_52_low %> - $<%= @stock_quote.week_52_high %></p>
+        </div>
+        <div class='col-6'>
+          <p class='border-top border-bottom m-0 p-1'><strong> Market Cap: </strong><%= number_to_currency(number_to_human(@market_cap)) %></p>
+          <p class='border-top border-bottom m-0 p-1'><strong>  P/E Ratio: </strong><%= @stock_quote.pe_ratio %></p>
+          <p class='border-top border-bottom m-0 p-1'><strong>  Beta: </strong><%= @beta %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

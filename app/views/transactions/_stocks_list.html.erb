@@ -1,4 +1,4 @@
-<table class='table table-bordered table-hover mt-4'>
+<table class='table table-bordered table-hover mt-4 shadow-sm'>
   <thead class="thead-dark">
     <tr>
       <th>Symbol</th>
@@ -8,8 +8,8 @@
   </thead>
   <% @stocks.each do |stock| %>
     <tbody>
-      <tr>
-        <td><%= stock.symbol %></td>
+      <tr class='bg-white'>
+        <td><%= link_to stock.symbol,  stock_path(stock), class: 'text-dark' %></td>
         <td><%= stock.company_name %></td>
         <td>$<%= stock.price %></td>
       </tr>
