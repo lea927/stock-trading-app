@@ -1,6 +1,13 @@
 <%= form_with(model: transaction) do |f| %>
     <h2><%= @stock.company_name %></h2>
+    <%= f.label :symbol %>
+    <%= f.text_field :symbol, value: @stock.symbol, readonly: true %><br>
     <%= f.label :price %>
-    <%= f.text_field :price, value: @stock.price, readonly: true %>
-    <%= f.submit %>
+    <%= f.text_field :price, value: @stock.price, readonly: true %><br>
+    <%= f.label :share %>
+    <%= f.number_field :share, value: 1, required: true %><br>
+    <%= f.label :purchase_price %>
+    <%= f.text_field :purchase_price, readonly: true %><br>
+    <%= f.submit 'Buy' %>
 <% end %>
+<%= javascript_pack_tag 'buy_stock' %>
