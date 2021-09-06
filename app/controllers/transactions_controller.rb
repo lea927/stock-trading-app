@@ -1,15 +1,20 @@
 class TransactionsController < ApplicationController
     before_action :authenticate_user!
+    before_action :find_stock, only: [:new]
 
     def my_portfolio
       @stocks = current_user.stocks
     end
 
     def create 
-      #only create a new lookup of stock if it doesn't exist in the current database
-      @stock = Stock.search_db(params[:symbol]) || Stock.new_lookup(params[:symbol])
-      @stock.save
-      save_transaction
+      if current_user&.broker?
+        #only create a new lookup of stock if it doesn't exist in the current database
+        @stock = Stock.search_db(params[:symbol]) || Stock.new_lookup(params[:symbol])
+        save_transaction
+      elsif current_user&.buyer?
+        byebug
+        save_transaction
+      end 
     end
 
     def buyer_stock_market
@@ -20,11 +25,12 @@ class TransactionsController < ApplicationController
       @transaction = Transaction.new
     end
 
-    def show
+    def find_stock
       @stock = Stock.find(params[:id])
     end
 
     def save_transaction
+      @stock.save
       @transaction = Transaction.create!(user: current_user, stock: @stock)
       flash[:notice] = "#{@stock.company_name} was successfully added to your portfolio"
       redirect_to my_portfolio_path

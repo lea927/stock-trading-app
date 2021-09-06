@@ -13,5 +13,5 @@ Rails.application.routes.draw do
   get 'search_stock', to: 'stocks#search'
   get 'stocks/search'
   resources :stocks, only: [:show]
-  resources :transactions, only: [:create,:new,:show]
+  resources :transactions, only: [:create,:new]
 end
