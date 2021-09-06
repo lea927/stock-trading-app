@@ -1,14 +1,23 @@
-<div class='position-absolute top-50 start-50 translate-middle'>
-  <% if user_signed_in? %>
-    <p class="mt-4">Hi, <%= current_user.first_name %></p>
-  <% end %>
-  <div class="d-flex flex-column align-items-center justify-content-center">
-    <br>
+<section class='pt-md-11 my-4'>
+  <div class='container'>
     <% if !user_signed_in? %>
-      <h1 class='display-2 fw-bold'>Welcome to Stockit</h1>
-      <h2 class='display-6'>Designed to <span class='mark'>earn</span> you more.</h2>
-      <p>If you need to keep track of your stocks of any kind - this application can help you to do it.</p>
-      <%= link_to "Get Started", new_user_registration_path, class: 'btn btn-lg btn-primary btn-large' %>
+      <div class='row align-items-center'>
+        <div class='col-12 col-md-7 col-lg-6 order-md-2'>
+          <%= image_tag('/analytics-animate.svg', class:'w-100') %>
+        </div>
+        <div class='class="col-12 col-md-5 col-lg-6 order-md-1'>
+          <h1 class='display-3 fw-bold'>Welcome to Stockit</h1>
+          <h2 class='display-6'>Designed to <span class='mark'>earn</span> you more.</h2>
+          <p class='text-muted'>If you need to keep track of your stocks of any kind - <br>
+            this application can help you to do it.</p>
+          <%= link_to(new_user_registration_path) do %>
+            <button class='btn btn-primary btn-lg shadow mt-2'>
+              Get Started
+              <i class="fas fa-arrow-right ms-2"></i>
+            </button>
+          <% end %>
+        </div>
+      </div>
     <% end %>
   </div>
-</div>
+</section>
