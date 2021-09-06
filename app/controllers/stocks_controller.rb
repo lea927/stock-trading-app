@@ -29,5 +29,6 @@ class StocksController < ApplicationController
     @company = client.company(@stock.symbol)
     @market_cap = @stock_quote.market_cap
     @beta = client.key_stats(@stock.symbol).beta.round(2)
+    @broker_stocks = User.find_by(role_id: 2, approved: true).stocks.where(id: params[:id])
   end
 end
