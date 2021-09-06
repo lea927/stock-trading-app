@@ -12,6 +12,7 @@ class TransactionsController < ApplicationController
         @stock = Stock.search_db(params[:symbol]) || Stock.new_lookup(params[:symbol])
         save_transaction
       elsif current_user&.buyer?
+        @stock = Stock.find_by(params[:id])
         save_transaction
       end 
     end
@@ -29,7 +30,7 @@ class TransactionsController < ApplicationController
     end
 
     def save_transaction
-      @stock.save
+      @stock.save if current_user&.broker?
       @transaction = Transaction.create!(user: current_user, stock: @stock)
       flash[:notice] = "#{@stock.company_name} was successfully added to your portfolio"
       redirect_to my_portfolio_path
