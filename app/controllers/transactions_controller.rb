@@ -1,6 +1,6 @@
 class TransactionsController < ApplicationController
     before_action :authenticate_user!
-    before_action :find_stock, only: [:new]
+    before_action :find_stock, only: [:new,:show]
 
     def my_portfolio
       @stocks = current_user.stocks
@@ -12,7 +12,6 @@ class TransactionsController < ApplicationController
         @stock = Stock.search_db(params[:symbol]) || Stock.new_lookup(params[:symbol])
         save_transaction
       elsif current_user&.buyer?
-        byebug
         save_transaction
       end 
     end
@@ -21,7 +20,7 @@ class TransactionsController < ApplicationController
       @stocks = User.find_by(role_id: 2, approved: true).stocks
     end
 
-    def new
+    def show
       @transaction = Transaction.new
     end
 
