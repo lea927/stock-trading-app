@@ -1,9 +1,11 @@
 class TransactionsController < ApplicationController
     before_action :authenticate_user!
     before_action :find_stock, only: [:new,:show]
+    include TransactionsHelper
 
     def my_portfolio
       @stocks = current_user.stocks
+      get_balance
     end
 
     def create 
