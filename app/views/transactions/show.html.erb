@@ -11,7 +11,7 @@
         </div>
         <div class="field">
             <%= f.label :share %>
-            <%= f.number_field :share, value: 1, required: true, class: 'form-control' %>
+            <%= f.number_field :share, value: 1, required: true, class: 'form-control',min: 1 %>
         </div>
         <div class="field">
             <%= f.label :purchase_price %>
