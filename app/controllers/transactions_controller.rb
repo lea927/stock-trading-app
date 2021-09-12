@@ -13,8 +13,9 @@ class TransactionsController < ApplicationController
         #only create a new lookup of stock if it doesn't exist in the current database
         @stock = Stock.search_db(params[:symbol]) || Stock.new_lookup(params[:symbol])
         save_transaction
-      elsif current_user.buyer?
+      elsif current_user.buyer?  
         @transaction = Transaction.new(transaction_params)
+        @transaction.user_id = current_user.id
         @transaction.save
         flash[:notice] = "#{@transaction.stock.company_name} was successfully added to your portfolio"
         redirect_to my_portfolio_path

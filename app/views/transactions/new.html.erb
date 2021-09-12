@@ -14,7 +14,6 @@
     <%= f.number_field :price,readonly: true,class: 'form-control' %>
   </div>
   <%= f.hidden_field :stock_id, value: @stock.id %>
-  <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.submit 'Buy', class: 'btn btn-primary my-2 w-100'%>
 <% end %>
 <%= javascript_pack_tag 'buy_stock' %>
