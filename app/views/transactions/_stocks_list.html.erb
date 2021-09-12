@@ -3,7 +3,11 @@
     <tr>
       <th>Symbol</th>
       <th>Company Name</th>
-      <th>Price</th>
+      <th>Stock Price</th>
+      <% if current_user.buyer? %>
+        <th>Shares</th>
+        <th>Total Price</th>
+      <% end %>
     </tr>
   </thead>
   <% @stocks.each do |stock| %>
@@ -12,6 +16,10 @@
         <td><%= link_to stock.symbol,  stock_path(stock), class: 'text-dark' %></td>
         <td><%= stock.company_name %></td>
         <td>$<%= stock.price %></td>
+        <% if current_user.buyer? %>
+          <td><%= Transaction.find_by(stock_id: stock.id, user_id: current_user.id, stock_price: stock.price).share  %></td>
+          <td>$<%= Transaction.find_by(stock_id: stock.id, user_id: current_user.id, stock_price: stock.price).price  %></td>
+        <% end %>
       </tr>
     </tbody>
   <% end %>

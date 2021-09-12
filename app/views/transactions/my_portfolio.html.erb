@@ -1,8 +1,8 @@
 <div class="container">
   <p>My Portfolio</p>
-<% if current_user&.buyer? %>
-<%= render 'balance' %>
-<% end %>
+  <% if current_user&.buyer? %>
+    <%= render 'balance' %>
+  <% end %>
   <%= "Your portfolio is empty" if current_user.stocks.empty? %>
   <% if !@stocks.empty? %>
     <%= render 'transactions/stocks_list' %>
