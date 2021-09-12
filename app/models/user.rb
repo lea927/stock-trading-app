@@ -29,6 +29,7 @@ class User < ApplicationRecord
 
   def default_values
     self.approved = 'true' unless self.role.name == 'Broker'
+    self.balance = 50000 if self.role.name == 'Buyer'
   end
 
   def active_for_authentication? 

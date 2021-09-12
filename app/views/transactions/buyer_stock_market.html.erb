@@ -4,15 +4,13 @@
       <tr>
         <th>Symbol</th>
         <th>Company Name</th>
-        <th>Actions</th>
       </tr>
     </thead>
     <% @stocks.each do |stock| %>
       <tbody>
         <tr>
-          <td><%= stock.symbol %></td>
+          <td><%= link_to stock.symbol, stock_path(stock), method: :get  %></td>
           <td><%= stock.company_name %></td>
-          <td><%= link_to 'Show', stock_path(stock), method: :get, class: 'btn btn-success btn-sm w-100'%></td>
         </tr>
       </tbody>
     <% end %>
