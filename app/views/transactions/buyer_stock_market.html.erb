@@ -9,7 +9,7 @@
     <% @stocks.each do |stock| %>
       <tbody>
         <tr>
-          <td><%= link_to stock.symbol, transactions_path(stock), method: :get  %></td>
+          <td><%= link_to stock.symbol, stock_path(stock), method: :get  %></td>
           <td><%= stock.company_name %></td>
         </tr>
       </tbody>
