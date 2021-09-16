@@ -1,23 +1,11 @@
-<% if current_user&.broker? %>
-  <% if current_page?(my_portfolio_path) %>
-    <li><%= link_to "My Portfolio", my_portfolio_path, class: 'btn btn-outline-secondary mx-2 text-decoration-none active' %></li>
-    <li><%= link_to "Search Stocks", stocks_search_path, class: 'btn btn-outline-secondary mx-2 text-decoration-none' %></li>
-  <% else %>
-    <li><%= link_to "My Portfolio", my_portfolio_path, class: 'btn btn-outline-secondary mx-2 text-decoration-none' %></li>
-    <li><%= link_to "Search Stocks", stocks_search_path, class: 'btn btn-outline-secondary mx-2 text-decoration-none active' %></li>
-  <% end %>
-<% else %>
-  <% if current_page?(my_portfolio_path)  %>
-    <li><%= link_to "My Portfolio", my_portfolio_path, class: 'btn btn-outline-secondary mx-2 text-decoration-none active' %></li>
-    <li><%= link_to "Search Stocks", stocks_search_path, class: 'btn btn-outline-secondary mx-2 text-decoration-none' %></li>
-    <li><%= link_to "Stock Market", buyer_stock_market_path, class: 'btn btn-outline-secondary mx-2 text-decoration-none' %></li>
-  <% elsif current_page?(stocks_search_path) %>
-    <li><%= link_to "My Portfolio", my_portfolio_path, class: 'btn btn-outline-secondary mx-2 text-decoration-none' %></li>
-    <li><%= link_to "Search Stocks", stocks_search_path, class: 'btn btn-outline-secondary mx-2 text-decoration-none active' %></li>
-    <li><%= link_to "Stock Market", buyer_stock_market_path, class: 'btn btn-outline-secondary mx-2 text-decoration-none' %></li>
-  <% else %>
-    <li><%= link_to "My Portfolio", my_portfolio_path, class: 'btn btn-outline-secondary mx-2 text-decoration-none' %></li>
-    <li><%= link_to "Search Stocks", stocks_search_path, class: 'btn btn-outline-secondary mx-2 text-decoration-none' %></li>
-    <li><%= link_to "Stock Market", buyer_stock_market_path, class: 'btn btn-outline-secondary mx-2 text-decoration-none active' %></li>
-  <% end %>
+<li class="nav-item">
+  <%= link_to "My Portfolio", my_portfolio_path, class: "btn btn-outline-secondary mx-2 text-decoration-none #{current_class?(my_portfolio_path)}" %>
+</li>
+<li class="nav-item">
+  <%= link_to "Search Stocks", stocks_search_path, class: "btn btn-outline-secondary mx-2 text-decoration-none #{current_class?(stocks_search_path)}" %>
+</li>
+<% if current_user.buyer? %>
+  <li class="nav-item">
+    <%= link_to "Stock Market", buyer_stock_market_path, class: "btn btn-outline-secondary mx-2 text-decoration-none #{current_class?(buyer_stock_market_path)}" %>
+  </li>
 <% end %>
