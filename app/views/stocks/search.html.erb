@@ -1,7 +1,11 @@
 <div class="container">
   <%# form will submit to search_stock_path in stocks controller%>
   <div class="col-lg-6 mx-auto">
-    <h1 class="fs-5">Add stocks to your portfolio</h1>
+    <% if current_user.broker? %>
+      <h1 class="fs-5">Add stocks to your portfolio</h1>
+    <% else %>
+      <h1 class="fs-5">Search for stock prices</h1>
+    <% end %>
     <%= form_tag search_stock_path, remote: true, method: :get do %>
       <div class="form-group row">
         <div class="p-0 position-relative">

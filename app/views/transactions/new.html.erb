@@ -3,7 +3,10 @@
   <p>Symbol: <%= @stock.symbol %></p>
   <div class="field">
     <%= f.label :stock_price %>
-    <%= f.number_field :stock_price, value: @stock.price, readonly: true, class: 'form-control' %>
+    <div class="input-group">
+      <div class="input-group-text">$</div>
+      <%= f.number_field :stock_price, value: @stock.price, readonly: true, class: 'form-control' %>
+    </div>
   </div>
   <div class="field">
     <%= f.label :share %>
@@ -11,9 +14,13 @@
   </div>
   <div class="field">
     <%= f.label :price, 'Purchase Price' %>
-    <%= f.number_field :price,readonly: true,class: 'form-control' %>
+    <div class="input-group">
+      <div class="input-group-text">$</div>
+      <%= f.number_field :price, readonly: true, class: 'form-control' %>
+    </div>
   </div>
   <%= f.hidden_field :stock_id, value: @stock.id %>
-  <%= f.submit 'Buy', class: 'btn btn-primary my-2 w-100'%>
+  <%= f.submit 'Buy', class: 'btn btn-success my-2 w-100'%>
+  <%= link_to 'Cancel', 'javascript:history.back()', class: 'btn btn-outline-secondary w-100' %>
 <% end %>
 <%= javascript_pack_tag 'buy_stock' %>

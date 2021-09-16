@@ -15,9 +15,11 @@
           <%= f.label :remember_me %>
         </div>
       <% end %>
-      <%= render 'devise/shared/links' %>
       <div class='actions'>
         <%= f.submit 'Log in',class:'w-100 btn btn-lg btn-primary mt-4'%>
+        <div class='align-self-center mt-2'>
+            Don't have an account? <%= render 'devise/shared/links' %>
+        </div>
       </div>
       <p class="mt-5 mb-3 text-muted">© Stockit 2021</p>
     <% end %>

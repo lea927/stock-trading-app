@@ -1,5 +1,5 @@
-<div class="container">
-  <p>My Portfolio</p>
+<div class="container-fluid p-4">
+  <h1 class='fs-5'>My Portfolio</h1>
   <% if current_user&.buyer? %>
     <%= render 'balance' %>
   <% end %>

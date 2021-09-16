@@ -21,22 +21,24 @@
     </div>
   </div>
   <% if current_user.buyer? %>
-    <table class='table table-bordered table-hover mt-4 shadow-sm'>
-      <thead class="thead-dark">
-        <tr>
-          <th>Broker</th>
-          <th>Price</th>
-        </tr>
-      </thead>
-      <% @broker_stocks.each do |stock| %>
-        <tbody>
-          <tr class='bg-white'>
-            <td><%= Transaction.find_by(stock: stock, price: stock.price).user.full_name %></td>
-            <td>$<%= stock.price %></td>
-            <td><%= button_to 'Buy', new_transaction_path(stock), class: 'btn btn-success btn-sm w-100'%></td>
+    <div class='table-responsive m-4'>
+      <table class='table table-bordered table-hover my-4 shadow-sm'>
+        <thead class="thead-dark">
+          <tr>
+            <th>Broker</th>
+            <th>Price</th>
           </tr>
-        </tbody>
-      <% end %>
-    </table>
+        </thead>
+        <% @broker_stocks.each do |stock| %>
+          <tbody>
+            <tr class='bg-white'>
+              <td><%= Transaction.find_by(stock: stock, price: stock.price).user.full_name %></td>
+              <td>$<%= stock.price %></td>
+              <td><%= button_to 'Buy', new_transaction_path(stock), class: 'btn btn-success btn-sm w-100'%></td>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
+    </div>
   <% end %>
 </div>
