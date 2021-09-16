@@ -20,7 +20,7 @@ RSpec.describe 'adding stocks to portfolio', type: :system, driver: :selenium_ch
   end
 
   let(:search_stock) do
-    fill_in "stock",	with: "AMZN" 
+    fill_in 'stock',	with: 'AMZN'
     page.find('button[type="submit"]').click
   end
 
@@ -31,12 +31,12 @@ RSpec.describe 'adding stocks to portfolio', type: :system, driver: :selenium_ch
   end
 
   describe "adding stocks to broker's portfolio" do
-    it "successfully adds stock to portfolio" do
-        login_broker
-        search_stock
-        sleep(1)
-        click_on 'Add'
-        expect(page).to have_content 'Amazon.com Inc'
+    it 'successfully adds stock to portfolio' do
+      login_broker
+      search_stock
+      sleep(1)
+      click_on 'Add'
+      expect(page).to have_content 'Amazon.com Inc'
     end
   end
 end

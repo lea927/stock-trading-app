@@ -34,7 +34,7 @@ RSpec.describe 'viewing all users', type: :system, driver: :selenium_chrome, js:
       sleep(1)
       expect(page).to have_content(broker.email)
     end
-  
+
     it 'displays registered buyers' do
       buyer = User.create!(email: 'johndoe_buyer@email.com', password: 'johndoe123', role_id: 3, first_name: 'John', last_name: 'Doe')
       login_as(admin)

@@ -25,7 +25,7 @@ RSpec.describe 'User signing up', type: :system, driver: :selenium_chrome, js: t
     user
     visit new_user_registration_path
   end
-  
+
   describe 'Successful sign up' do
     it 'signs up as a buyer' do
       visit new_user_registration_path

@@ -52,7 +52,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def unapproved_users 
+  def unapproved_users
     @unapproved_users = User.where(approved: false)
   end
 
@@ -76,6 +76,4 @@ class UsersController < ApplicationController
   def needs_password?(_user, params)
     params[:password].present?
   end
-
-  
 end

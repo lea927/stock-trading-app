@@ -83,13 +83,13 @@ RSpec.describe 'editing users', type: :system, driver: :selenium_chrome, js: tru
       sleep(1)
       click_on 'Update User'
     end
-    
+
     it 'fills out without password' do
       visit edit_users_admin_path(id: broker.id)
       blank_pw
       click_on 'Update User'
       sleep(1)
-      expect(page).to have_content "User was successfully updated."
+      expect(page).to have_content 'User was successfully updated.'
     end
   end
 
