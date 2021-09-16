@@ -7,15 +7,6 @@ RSpec.describe 'creating users', type: :system, driver: :selenium_chrome, js: tr
   let(:role) do
     @role = FactoryBot.create(:role)
   end
-  let(:admin) do
-    @user = User.create!(
-      first_name: 'Tom',
-      last_name: 'Reid',
-      email: 'tom_admin@email.com',
-      password: 'tom_admin123',
-      role_id: 1
-    )
-  end
   let(:fillout_broker) do
     page.select 'Broker', from: 'user[role_id]'
     fill_in 'user_first_name', with: 'Jane'
@@ -36,11 +27,14 @@ RSpec.describe 'creating users', type: :system, driver: :selenium_chrome, js: tr
   before do
     reset_id
     role
-    admin
-  end
-
-  before do
-    login_as(@user, scope: :user)
+    user = User.create!(
+      first_name: 'Tom',
+      last_name: 'Reid',
+      email: 'tom_admin@email.com',
+      password: 'tom_admin123',
+      role_id: 1
+    )
+    login_as(user, scope: :user)
   end
 
   it 'validates path if correct' do
