@@ -7,7 +7,8 @@
       <% end %>
     </div>
   <% end %>
-  <%= collection_select(:user, :role_id, Role.all, :id, :name, { prompt: true } ) %>
+  <p class='m-0'>Role:</p>
+  <%= collection_select(:user, :role_id, Role.all, :id, :name, { prompt: true }, class:'form-select') %>
   <div class='field'>
     <%= form.label :first_name, class: 'form-label' %>
     <%= form.text_field :first_name, class: 'form-control' %>
@@ -34,7 +35,7 @@
   <div class='actions d-flex flex-column justify-content-center mt-2'>
     <%= form.submit class: 'btn btn-primary' %>
     <div>
-      <%= link_to 'Cancel', users_admin_index_path, class: 'btn btn-outline-dark btn-sm my-2 w-100' %>
+      <%= link_to 'Cancel', users_admin_index_path, class: 'btn btn-outline-secondary my-2 w-100' %>
     </div>
   </div>
 <% end %>
