@@ -12,12 +12,7 @@
   </head>
   <body class="bg-light">
     <%= render 'layouts/header' %>
-    <% if notice %>
-      <%= render 'layouts/notices' %>
-    <% end %>
-    <% if alert %>
-      <p><%= alert %></p>
-    <% end %>
+    <%= render 'layouts/notices' %>
     <div class="container-fluid">
       <%= yield %>
     </div>
