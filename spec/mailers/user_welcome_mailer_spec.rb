@@ -1,8 +1,7 @@
 require 'rails_helper'
 
-include ActiveJob::TestHelper
-
 RSpec.describe UserMailer, type: :mailer do
+  include ActiveJob::TestHelper
   describe 'sending welcome email' do
     let(:reset_id) do
       Role.connection.execute('ALTER SEQUENCE roles_id_seq RESTART')
