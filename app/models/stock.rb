@@ -3,7 +3,7 @@ class Stock < ApplicationRecord
   has_many :users, through: :transactions
   validates :symbol, { presence: true, uniqueness: true }
 
-  #self: don't need an instance of stock class. can directly call this method from the class
+  # self: don't need an instance of stock class. can directly call this method from the class
   def self.iex_api
     IEX::Api::Client.new(
       publishable_token: ENV['IEX_API_PUBLISHABLE_TOKEN'],
@@ -13,11 +13,11 @@ class Stock < ApplicationRecord
   end
 
   def self.new_lookup(symbol)
-    client = self.iex_api
+    client = Stock.iex_api
     begin
       new(symbol: symbol.upcase, company_name: client.quote(symbol).company_name, price: client.quote(symbol).latest_price)
     rescue StandardError
-      #return nil in order to display a message through the controller when error is caught 
+      # return nil in order to display a message through the controller when error is caught
       nil
     end
   end
