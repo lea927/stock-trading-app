@@ -20,7 +20,7 @@ RSpec.describe 'searching stocks', type: :system, driver: :selenium_chrome, js: 
   end
 
   let(:search_stock) do
-    fill_in "stock",	with: "AMZN" 
+    fill_in 'stock',	with: 'AMZN'
     page.find('button[type="submit"]').click
   end
 
@@ -31,10 +31,11 @@ RSpec.describe 'searching stocks', type: :system, driver: :selenium_chrome, js: 
   end
 
   describe 'searches correct stock symbol' do
-    it "visits search stock page" do
+    it 'visits search stock page' do
       login_broker
       expect(page).to have_css('input[type="text"]')
     end
+
     it "successfully displays stock's company name" do
       login_broker
       search_stock
@@ -42,11 +43,11 @@ RSpec.describe 'searching stocks', type: :system, driver: :selenium_chrome, js: 
       expect(page).to have_content 'Amazon.com Inc'
     end
   end
-  
+
   describe 'searches incorrect stock symbol' do
-    it "displays alert message" do
+    it 'displays alert message' do
       login_broker
-      fill_in "stock",	with: "YO" 
+      fill_in 'stock',	with: 'YO'
       page.find('button[type="submit"]').click
       sleep(1.2)
       expect(page).to have_content 'Please enter a valid stock symbol'

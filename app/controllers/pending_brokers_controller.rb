@@ -8,9 +8,9 @@ class PendingBrokersController < ApplicationController
     @unapproved_users = User.where(approved: false)
   end
 
-  def update 
+  def update
     @user = User.find(params[:id])
-    @user.update(:approved=>true)
+    @user.update(approved: true)
     redirect_to pending_brokers_path, notice: 'Broker was successfully approved.'
     UserMailer.with(user: @user).approved_email.deliver_now
   end
@@ -18,6 +18,6 @@ class PendingBrokersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:approved) 
+    params.require(:user).permit(:approved)
   end
 end

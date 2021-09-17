@@ -63,7 +63,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
-  def unapproved_users 
+  def unapproved_users
     @unapproved_users = User.where(approved: false)
   end
 

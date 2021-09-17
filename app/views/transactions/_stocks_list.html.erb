@@ -1,26 +1,28 @@
-<table class='table table-bordered table-hover mt-4 shadow-sm'>
-  <thead class="thead-dark">
-    <tr>
-      <th>Symbol</th>
-      <th>Company Name</th>
-      <th>Stock Price</th>
-      <% if current_user.buyer? %>
-        <th>Shares</th>
-        <th>Total Price</th>
-      <% end %>
-    </tr>
-  </thead>
-  <% @transactions.each do |transaction| %>
-    <tbody>
-      <tr class='bg-white'>
-        <td><%= link_to transaction.stock.symbol,  stock_path(transaction.stock), class: 'text-dark' %></td>
-        <td><%= transaction.stock.company_name %></td>
-        <td>$<%= transaction.stock.price %></td>
+<div class='table-responsive'>
+  <table class='table table-bordered table-hover mt-4 shadow-sm'>
+    <thead class="bg-primary">
+      <tr>
+        <th>Symbol</th>
+        <th>Company Name</th>
+        <th>Stock Price</th>
         <% if current_user.buyer? %>
-          <td><%= transaction.share  %></td>
-          <td>$<%= transaction.price  %></td>
+          <th>Shares</th>
+          <th>Total Price</th>
         <% end %>
       </tr>
-    </tbody>
-  <% end %>
-</table>
+    </thead>
+    <% @transactions.each do |transaction| %>
+      <tbody>
+        <tr class='bg-white'>
+          <td><%= link_to transaction.stock.symbol,  stock_path(transaction.stock), class: 'text-dark' %></td>
+          <td><%= transaction.stock.company_name %></td>
+          <td>$<%= transaction.stock.price %></td>
+          <% if current_user.buyer? %>
+            <td><%= transaction.share  %></td>
+            <td>$<%= transaction.price  %></td>
+          <% end %>
+        </tr>
+      </tbody>
+    <% end %>
+  </table>
+</div>

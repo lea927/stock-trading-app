@@ -3,8 +3,8 @@ class StocksController < ApplicationController
 
   def search
     if params[:stock].present?
-      #params[:stock] returns user's input symbol from the search bar
-      @stock = Stock.new_lookup(params[:stock]) 
+      # params[:stock] returns user's input symbol from the search bar
+      @stock = Stock.new_lookup(params[:stock])
       if @stock
         respond_to do |format|
           format.js { render partial: 'stocks/search_result' }
@@ -16,12 +16,10 @@ class StocksController < ApplicationController
           format.js { render partial: 'stocks/search_result' }
         end
       end
-    else
-      nil
     end
   end
 
-  def show 
+  def show
     client = Stock.iex_api
     @stock = Stock.find(params[:id])
     @stock_quote = client.quote(@stock.symbol)

@@ -1,34 +1,36 @@
-<div class="mx-4">
+<div class="container-fluid">
   <div class= 'd-flex justify-content-between mx-4'>
     <p>You are logged in as: <strong><%= current_user.email %></strong></p>
     <%= link_to "New User", new_users_admin_path, class: 'btn btn-primary' %>
     <% if current_user&.buyer? %>
-    <%= render 'balance' %>
+      <%= render 'balance' %>
     <% end %>
   </div>
-  <table class='table table-bordered table-hover mt-4'>
-    <thead class="thead-dark">
-      <tr>
-        <th>ID</th>
-        <th>Full Name</th>
-        <th>Email</th>
-        <th>Account</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <% @users.each do |user| %>
-      <tbody>
+  <div class='table-responsive'>
+    <table class='table table-bordered table-hover mt-4'>
+      <thead class="bg-primary">
         <tr>
-          <td><%= user.id %></td>
-          <td><%= user.full_name %></td>
-          <td><%= user.email %></td>
-          <td><%= user.role.name %></td>
-          <td>
-            <%= link_to 'Show', users_admin_path(user), class: 'btn btn-info btn-sm'%>
-            <%= link_to 'Edit', edit_users_admin_path(user), class: 'btn btn-secondary btn-sm' %>
-          </td>
+          <th>ID</th>
+          <th>Full Name</th>
+          <th>Email</th>
+          <th>Account</th>
+          <th>Actions</th>
         </tr>
-      </tbody>
-    <% end %>
-  </table>
+      </thead>
+      <% @users.each do |user| %>
+        <tbody>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= user.full_name %></td>
+            <td><%= user.email %></td>
+            <td><%= user.role.name %></td>
+            <td class='text-center'>
+              <%= link_to 'Show', users_admin_path(user), class: 'btn btn-outline-primary btn-sm'%>
+              <%= link_to 'Edit', edit_users_admin_path(user), class: 'btn btn-outline-secondary btn-sm' %>
+            </td>
+          </tr>
+        </tbody>
+      <% end %>
+    </table>
+  </div>
 </div>
