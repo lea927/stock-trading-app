@@ -7,8 +7,9 @@ RSpec.describe 'editing users', type: :system, driver: :selenium_chrome, js: tru
   let(:role) do
     @role = FactoryBot.create(:role)
   end
-  let(:user) do
-    @user = FactoryBot.create(:user)
+  let(:login_admin) do
+    user = FactoryBot.create(:user)
+    login_as(user)
   end
   let(:broker) do
     @broker = User.create!(
@@ -24,95 +25,58 @@ RSpec.describe 'editing users', type: :system, driver: :selenium_chrome, js: tru
     fill_in 'user_first_name', with: 'Jane Edited'
     fill_in 'user_last_name', with: 'Doe Edited'
     fill_in 'user_email', with: 'janedoe_broker_edited@email.com'
-    fill_in 'user_password', with: 'janedoe123edited'
-    fill_in 'user_password_confirmation', with: 'janedoe123edited'
-  end
-  let(:blank_firstname) do
-    page.select 'Broker', from: 'user[role_id]'
-    fill_in 'user_first_name', with: ''
-    fill_in 'user_last_name', with: 'Doe Edited'
-    fill_in 'user_email', with: 'janedoe_broker_edited@email.com'
-    fill_in 'user_password', with: 'janedoe123edited'
-    fill_in 'user_password_confirmation', with: 'janedoe123edited'
-  end
-  let(:blank_lastname) do
-    page.select 'Broker', from: 'user[role_id]'
-    fill_in 'user_first_name', with: 'Jane Edited'
-    fill_in 'user_last_name', with: ''
-    fill_in 'user_email', with: 'janedoe_broker_edited@email.com'
-    fill_in 'user_password', with: 'janedoe123edited'
-    fill_in 'user_password_confirmation', with: 'janedoe123edited'
-  end
-  let(:blank_pw) do
-    page.select 'Broker', from: 'user[role_id]'
-    fill_in 'user_first_name', with: 'Jane Edited'
-    fill_in 'user_last_name', with: 'Doe Edited'
-    fill_in 'user_email', with: 'janedoe_broker_edited@email.com'
-    fill_in 'user_password', with: ''
-    fill_in 'user_password_confirmation', with: ''
-  end
-  let(:blank_email) do
-    page.select 'Broker', from: 'user[role_id]'
-    fill_in 'user_first_name', with: 'Jane Edited'
-    fill_in 'user_last_name', with: 'Doe Edited'
-    fill_in 'user_email', with: ''
-    fill_in 'user_password', with: 'janedoe123edited'
-    fill_in 'user_password_confirmation', with: 'janedoe123edited'
   end
 
   before do
     reset_id
-    role
-    user
+    role && broker && login_admin
   end
 
-  before do
-    login_as(@user, scope: :user)
-  end
-
-  describe 'edit a user' do
-    it 'validates the path' do
+  describe 'editing a user' do
+    before do
       visit edit_users_admin_path(id: broker.id)
-      sleep(1)
+    end
+
+    it 'validates the path' do
       expect(page).to have_current_path edit_users_admin_path(id: broker.id)
     end
 
     it 'fills out with complete details' do
-      visit edit_users_admin_path(id: broker.id)
       fillout_form
-      sleep(1)
+      fill_in 'user_password', with: 'janedoe123edited'
+      fill_in 'user_password_confirmation', with: 'janedoe123edited'
       click_on 'Update User'
+      expect(page).to have_content 'User was successfully updated.'
     end
 
     it 'fills out without password' do
-      visit edit_users_admin_path(id: broker.id)
-      blank_pw
+      fillout_form
+      fill_in 'user_password', with: ''
+      fill_in 'user_password_confirmation', with: ''
       click_on 'Update User'
-      sleep(1)
       expect(page).to have_content 'User was successfully updated.'
     end
   end
 
-  describe 'error messages' do
-    it 'fills out without first name' do
+  describe 'blank input fields' do
+    before do
       visit edit_users_admin_path(id: broker.id)
-      blank_firstname
-      sleep(1)
+      fill_in 'user_first_name', with: ''
+      fill_in 'user_last_name', with: ''
+      fill_in 'user_email', with: ''
       click_on 'Update User'
     end
 
-    it 'fills out without last name' do
-      visit edit_users_admin_path(id: broker.id)
-      blank_lastname
-      sleep(1)
-      click_on 'Update User'
+    it 'displays email error' do
+      expect(page).to have_content("Email can't be blank")
     end
 
-    it 'fills out without email' do
-      visit edit_users_admin_path(id: broker.id)
-      blank_email
-      sleep(1)
-      click_on 'Update User'
+    it 'displays first name error' do
+      expect(page).to have_content("First name can't be blank")
+    end
+
+    it 'displays last name error' do
+      expect(page).to have_content("Last name can't be blank")
     end
   end
 end

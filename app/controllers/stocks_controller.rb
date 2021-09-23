@@ -16,6 +16,8 @@ class StocksController < ApplicationController
           format.js { render partial: 'stocks/search_result' }
         end
       end
+    else
+      @stock = nil
     end
   end
 
