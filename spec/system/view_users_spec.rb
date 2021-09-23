@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'viewing all users', type: :system, driver: :selenium_chrome, js: true do
+RSpec.describe 'viewing all users', type: :system do
   let(:reset_id) do
     Role.connection.execute('ALTER SEQUENCE roles_id_seq RESTART')
   end
@@ -21,6 +21,7 @@ RSpec.describe 'viewing all users', type: :system, driver: :selenium_chrome, js:
   end
 
   before do
+    driven_by(:selenium_chrome_headless)
     reset_id
     role
     admin

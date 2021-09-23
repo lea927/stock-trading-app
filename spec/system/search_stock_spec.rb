@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'searching stocks', type: :system, driver: :selenium_chrome, js: true do
+RSpec.describe 'searching stocks', type: :system do
   let(:reset_id) do
     Role.connection.execute('ALTER SEQUENCE roles_id_seq RESTART')
   end
@@ -19,12 +19,8 @@ RSpec.describe 'searching stocks', type: :system, driver: :selenium_chrome, js: 
     visit search_stock_path
   end
 
-  let(:search_stock) do
-    fill_in 'stock',	with: 'AMZN'
-    page.find('button[type="submit"]').click
-  end
-
   before do
+    driven_by(:selenium_chrome_headless)
     reset_id
     create_roles
     broker
@@ -38,7 +34,8 @@ RSpec.describe 'searching stocks', type: :system, driver: :selenium_chrome, js: 
 
     it "successfully displays stock's company name" do
       login_broker
-      search_stock
+      fill_in 'stock',	with: 'AMZN'
+      page.find('button[type="submit"]').click
       sleep(1)
       expect(page).to have_content 'Amazon.com Inc'
     end
@@ -49,7 +46,6 @@ RSpec.describe 'searching stocks', type: :system, driver: :selenium_chrome, js: 
       login_broker
       fill_in 'stock',	with: 'YO'
       page.find('button[type="submit"]').click
-      sleep(1.2)
       expect(page).to have_content 'Please enter a valid stock symbol'
     end
   end
