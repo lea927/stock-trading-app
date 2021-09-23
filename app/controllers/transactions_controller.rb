@@ -5,7 +5,7 @@ class TransactionsController < ApplicationController
   def my_portfolio
     @stocks = current_user.stocks
     @transactions = current_user.transactions
-    get_balance
+    display_balance
   end
 
   def create
