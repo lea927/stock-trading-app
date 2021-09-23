@@ -31,7 +31,6 @@ RSpec.describe 'User signing up', type: :system, driver: :selenium_chrome, js: t
       visit new_user_registration_path
       choose(option: 3)
       populate_form
-      sleep(1)
       expect(page).to have_content('Welcome! You have signed up successfully.')
     end
   end
@@ -41,7 +40,6 @@ RSpec.describe 'User signing up', type: :system, driver: :selenium_chrome, js: t
       visit new_user_registration_path
       choose(option: 2)
       populate_form
-      sleep(1)
       expect(page).to have_content('You have signed up successfully but your account has not been approved by your administrator yet')
     end
   end

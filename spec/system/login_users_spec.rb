@@ -17,7 +17,6 @@ RSpec.describe 'logging in users', type: :system, driver: :selenium_chrome, js: 
   it 'validates sign in path' do
     visit new_user_session_path
     expect(page).to have_current_path new_user_session_path
-    sleep(2)
   end
 
   it 'successfully signs in' do
@@ -25,6 +24,5 @@ RSpec.describe 'logging in users', type: :system, driver: :selenium_chrome, js: 
     fill_in 'user_email', with: user.email
     fill_in 'user_password', with: user.password
     click_on 'Log in'
-    sleep(2)
   end
 end

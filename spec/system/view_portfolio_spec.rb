@@ -22,7 +22,6 @@ RSpec.describe 'viewing portfolio', type: :system, driver: :selenium_chrome, js:
       login_as(broker)
       visit '/my_portfolio/'
       expect(page).to have_content(/portfolio/i)
-      sleep(1)
     end
   end
 end
