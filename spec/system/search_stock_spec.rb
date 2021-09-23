@@ -32,12 +32,11 @@ RSpec.describe 'searching stocks', type: :system do
       expect(page).to have_css('input[type="text"]')
     end
 
-    it "successfully displays stock's company name" do
+    it 'does not display error message' do
       login_broker
       fill_in 'stock',	with: 'AMZN'
       page.find('button[type="submit"]').click
-      sleep(1)
-      expect(page).to have_content 'Amazon.com Inc'
+      expect(page).not_to have_content 'Please enter a valid stock symbol'
     end
   end
 
