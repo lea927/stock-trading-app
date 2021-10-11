@@ -47,11 +47,11 @@
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#version">Version</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
+    <!-- <li><a href="#usage">Usage</a></li> -->
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
@@ -84,6 +84,59 @@ Has the following features:
 - [PostgreSQL](https://www.postgresql.org/)
 - [Bootstrap](https://getbootstrap.com)
 - [Vanilla Javasript](https://www.javascript.com/)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- GETTING STARTED -->
+
+## Getting Started
+
+## Version
+
+```
+  Ruby 2.7.2
+  Rails 6.0.3.4
+  NodeJS 12.18.3
+  Yarn 1.22.4
+```
+
+### Installation
+
+1. Get a free API Key at [IEXCloud.io](https://iexcloud.io/)
+   Fork this repo:
+   ![image](images/fork.png)
+
+Then, clone your forked repo to your machine
+
+```
+  $ git clone git@github.com:<username>/stock-trading-app.git <name of your app>
+  $ cd <name of your app>
+```
+
+#### Setup
+
+```
+  $ bundle install
+  $ rake db:setup
+```
+
+#### Starting the application
+
+```
+  $ rails server
+```
+
+#### How to run the test suite
+
+```
+  $ rspec
+```
+
+#### How to run the Ruby Linter
+
+```
+  $ rubocop
+```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
