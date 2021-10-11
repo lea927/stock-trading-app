@@ -1,3 +1,4 @@
+<div id="top"></div>
 <!-- PROJECT SHIELDS -->
 <!--
 *** See the bottom of this document for the declaration of the reference variables
@@ -20,7 +21,7 @@
   <h3 align='center'>Stock Trading App</h3>
 
   <p align='center'>
-    A Ruby on Rails web app which utilizes the Ruby IEX gem which allows users to create accounts to sign in as buyers or brokers, which have their respective functionalities.
+    A mock Stock Trading App built with Ruby on Rails.
     <br />
     <a href='https://github.com/yvettetan/stock-trading-app'><strong>Explore the docs »</strong></a>
     <br />
@@ -33,6 +34,50 @@
   </p>
 </div>
 
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details>
+
+<!-- ABOUT THE PROJECT -->
+
+## About The Project
+
+[![Product Name Screen Shot][product-screenshot]](http://stockit1.herokuapp.com)
+
+A Ruby on Rails web app which utilizes the Ruby IEX gem which allows users to create accounts to sign in as buyers or brokers, which have their respective functionalities.
+
+Has the following features:
+
+- Utilized the IEX Gem to retrieve company information and the latest real-time stock prices.
+- Implemented an admin dashboard to approve new broker accounts.
+- Allowed users to create accounts to sign in as buyers or brokers, which have their respective functionalities.
+- Added a stock search feature using AJAX, to allow brokers to find listed companies to add to their portfolio.
+- Enabled buyers and brokers to view their individual transaction history.
+- Admin accounts are configured through the Seed file.
+- Uses Devise for user authentication.
+- Implements 40+ Rspec for TDD consisting of system, request and model specs. Integrates Factory Bot for the creation of sample data.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
@@ -44,4 +89,4 @@
 [stars-url]: https://github.com/yvettetan/stock-trading-app/stargazers
 [issues-shield]: https://img.shields.io/github/issues/yvettetan/stock-trading-app.svg?style=for-the-badge
 [issues-url]: https://github.com/yvettetan/stock-trading-app/issues
-[product-screenshot]: images/chart-line-solid.svg
+[product-screenshot]: images/landing-page.png
