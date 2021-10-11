@@ -157,6 +157,15 @@ Don't forget to give the project a star! Thanks again!
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+<!-- CONTACT -->
+
+## Contact
+
+Yvette Tan - [LinkedIn](https://www.linkedin.com/in/yvettedytan/)
+Lea Tinoso - [LinkedIn](https://www.linkedin.com/in/lealynltinoso/)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
