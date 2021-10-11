@@ -13,12 +13,12 @@
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/yvettetan/stock-trading-app.svg?style=for-the-badge
 [contributors-url]: https://github.com/yvettetan/stock-trading-app/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
+[forks-shield]: https://img.shields.io/github/forks/yvettetan/stock-trading-app.svg?style=for-the-badge
 [forks-url]: https://github.com/yvettetan/stock-trading-app/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/yvettetan/stock-trading-app.svg?style=for-the-badge
 [stars-url]: https://github.com/yvettetan/stock-trading-app/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/yvettetan/stock-trading-app.svg?style=for-the-badge
 [issues-url]: https://github.com/yvettetan/stock-trading-app/issues
-[product-screenshot]: images/chart-line-solid.svg
+[product-screenshot]: images/screenshot.png
