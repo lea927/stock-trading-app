@@ -78,6 +78,15 @@ Has the following features:
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+### Built With
+
+- [Ruby on Rails](https://rubyonrails.org/)
+- [PostgreSQL](https://www.postgresql.org/)
+- [Bootstrap](https://getbootstrap.com)
+- [Vanilla Javasript](https://www.javascript.com/)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
