@@ -21,7 +21,7 @@
   <h3 align='center'>Stock Trading App</h3>
 
   <p align='center'>
-    A mock Stock Trading App built with Ruby on Rails.
+    A virtual Stock Trading App built with Ruby on Rails.
     <br />
     <a href='https://github.com/yvettetan/stock-trading-app'><strong>Explore the docs »</strong></a>
     <br />
@@ -63,18 +63,21 @@
 
 [![Product Name Screen Shot][product-screenshot]](http://stockit1.herokuapp.com)
 
-A Ruby on Rails web app which utilizes the Ruby IEX gem which allows users to create accounts to sign in as buyers or brokers, which have their respective functionalities.
+A Ruby on Rails stock trading app that enables users to manage their stocks using the IEX Gem.
 
-Has the following features:
+### Features
 
-- Utilized the IEX Gem to retrieve company information and the latest real-time stock prices.
-- Implemented an admin dashboard to approve new broker accounts.
-- Allowed users to create accounts to sign in as buyers or brokers, which have their respective functionalities.
-- Added a stock search feature using AJAX, to allow brokers to find listed companies to add to their portfolio.
-- Enabled buyers and brokers to view their individual transaction history.
-- Admin accounts are configured through the Seed file.
-- Uses Devise for user authentication.
-- Implements 40+ Rspec for TDD consisting of system, request and model specs. Integrates Factory Bot for the creation of sample data.
+- View company information and their latest real-time stock prices
+- Register as a broker or buyer to start adding stocks to your portfolio
+- Brokers can search and add stocks to be purchased by buyers
+- Buyers can purchase shares of stocks from brokers to include in their portfolio
+- Admin dashboard to add new accounts, update current account details and approve pending broker accounts
+- Receive an email upon account creation. Brokers are notified on the status of their accounts
+- Update and cancel your account anytime
+
+#### Note
+
+- _Only approved Brokers will be able to login to their accounts_
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -83,7 +86,7 @@ Has the following features:
 - [Ruby on Rails](https://rubyonrails.org/)
 - [PostgreSQL](https://www.postgresql.org/)
 - [Bootstrap](https://getbootstrap.com)
-- [Vanilla Javasript](https://www.javascript.com/)
+- [Vanilla JavaScript](https://www.javascript.com/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -103,10 +106,10 @@ Has the following features:
 ### Installation
 
 1. Get a free API Key at [IEXCloud.io](https://iexcloud.io/)
-   Fork this repo:
+2. Fork this repo:
    ![image](images/fork.png)
 
-Then, clone your forked repo to your machine
+Then, clone your forked repo to your local machine
 
 ```
   $ git clone git@github.com:<username>/stock-trading-app.git <name of your app>
@@ -118,6 +121,7 @@ Then, clone your forked repo to your machine
 ```
   $ bundle install
   $ rake db:setup
+  $ yarn install
 ```
 
 #### Starting the application
