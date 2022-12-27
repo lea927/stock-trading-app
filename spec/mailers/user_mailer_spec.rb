@@ -37,7 +37,7 @@ RSpec.describe UserMailer, type: :mailer do
       end
 
       it 'sends from correct email' do
-        expect(mail.from).to include 'tom.stockit@gmail.com'
+        expect(mail.from).to include 'reidt2579@gmail.com'
       end
 
       it 'sents to correct email' do
