@@ -26,7 +26,7 @@
     <a href='https://github.com/yvettetan/stock-trading-app'><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href='http://stockit1.herokuapp.com/'>View Demo</a>
+    <a href='https://stock-it.onrender.com/'>View Demo</a>
     ·
     <a href='https://github.com/yvettetan/stock-trading-app/issues'>Report Bug</a>
     ·
@@ -61,7 +61,7 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](http://stockit1.herokuapp.com)
+[![Product Name Screen Shot][product-screenshot]](https://stock-it.onrender.com/)
 
 A Ruby on Rails stock trading app that enables users to manage their stocks using the IEX Gem.
 
